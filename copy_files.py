@@ -41,7 +41,6 @@ file_new=f'{course_dir}/Assignments/Assignment 5/New assignment 5 - transfer fun
 file_old=f'{student_visible_dir}/Assignments/Assignment05.pdf'
 out=shutil.copyfile(str(file_new),str(file_old))
 print(f'{out}\n{file_new}\n---\n')
-
 #
 # day 1
 #
@@ -286,7 +285,7 @@ file_old=f'{student_visible_dir}/Quiz Solutions/Day09QuizSolutions.pdf'
 out=shutil.copyfile(str(file_new),str(file_old))
 print(f'{out}\n{file_new}\n---\n')
 file_old=f'{student_visible_dir}/Post Class Slides/Day09PostClassSlides.pdf'
-file_new=f'{course_dir}/Classes/Day_09_temperature/slides/day09_postclass_2017wT2.pdf'
+file_new=f'{course_dir}/Classes/Day_09_temperature/slides/day09_postclass_2017wT2b.pdf'
 out=shutil.copyfile(str(file_new),str(file_old))
 print(out)
 file_old=f'{student_visible_dir}/Post Class Slides/Day09PreClassSlides.pdf'
@@ -406,6 +405,10 @@ print(f'{out}\n{file_new}\n---\n')
 # file_new=f'{course_dir}/Classes/Day 14 Paleotemp 1/Quiz/Day14PreClassAssn_PaleoT1_Fall2017_answers.pdf'
 # out=shutil.copyfile(str(file_new),str(file_old))
 # print(f'{out}\n{file_new}\n---\n')
+file_old=f'{student_visible_dir}/Worksheets/Day13WorksheetSolutions.pdf'
+file_new=f'{course_dir}/Classes/Day 14 Paleotemp 1/Worksheet/Day 14 Worksheet for instructors.pdf'
+out=shutil.copyfile(str(file_new),str(file_old))
+print(f'{out}\n{file_new}\n---\n')
 file_old=f'{student_visible_dir}/Pre Class Assignments/Day13PreClassAssignment.pdf'
 file_new=f'{course_dir}/Classes/Day 14 Paleotemp 1/Quiz/Day13PreClassAssn_PaleoT1_2017wT2.pdf'
 out=shutil.copyfile(str(file_new),str(file_old))
@@ -436,6 +439,10 @@ file_old=f'{student_visible_dir}/Pre Class Assignments/Day15PreClassAssignment.p
 file_new=f'{course_dir}/Classes/Day 16 Milankovitch/Quiz/Day15PreClassAssn_Milank_2017wT2.pdf'
 out=shutil.copyfile(str(file_new),str(file_old))
 print(f'{out}\n{file_new}\n---\n')
+file_old=f'{student_visible_dir}/Worksheets/Day15Worksheet.pdf'
+file_new=f'{course_dir}/Classes/Day 16 Milankovitch/Worksheet/Milank_worksheet_v2.pdf'
+out=shutil.copyfile(str(file_new),str(file_old))
+print(out)
 # file_old=f'{student_visible_dir}/Worksheets/Day15WorksheetSols.pdf'
 # file_new=f'{course_dir}/Classes/Day 16 Milankovitch/Worksheet/Milank_worksheet_v1_instructor.pdf'
 # out=shutil.copyfile(str(file_new),str(file_old))

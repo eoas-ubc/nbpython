@@ -1,0 +1,38 @@
+{% set version = "0.0.1" %}
+
+package:
+  name: e340py
+  version: {{ version }}
+
+source:
+  path: ../
+
+build:
+  number: 2
+
+requirements:
+  build:
+    - python
+
+  host:
+    - python
+    
+  run:
+    - python
+    - pandas
+
+test:
+  requires:
+    - python
+    - pandas
+    
+
+about:
+  home: https://clouds.eos.ubc.ca/~phil/courses
+  license: http://www.unidata.ucar.edu/software/netcdf/copyright.html
+  summary: 'e340 courseware'
+
+extra:
+  recipe-maintainers:
+    - phaustin
+
