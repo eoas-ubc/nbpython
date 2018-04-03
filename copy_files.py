@@ -37,8 +37,20 @@ file_new=f'{course_dir}/Assignments/Assignment4/Assignment04_2017wT2.pdf'
 file_old=f'{student_visible_dir}/Assignments/Assignment04.pdf'
 out=shutil.copyfile(str(file_new),str(file_old))
 print(f'{out}\n{file_new}\n---\n')
+file_new=f'{course_dir}/Assignments/Assignment4/Assignment04_2017_solutions.pdf'
+file_old=f'{student_visible_dir}/Assignments/Assignment04Solutions.pdf'
+out=shutil.copyfile(str(file_new),str(file_old))
+print(f'{out}\n{file_new}\n---\n')
 file_new=f'{course_dir}/Assignments/Assignment 5/New assignment 5 - transfer functions/Assignment 5-2_transfer functions_v4.pdf'
 file_old=f'{student_visible_dir}/Assignments/Assignment05.pdf'
+out=shutil.copyfile(str(file_new),str(file_old))
+print(f'{out}\n{file_new}\n---\n')
+file_new=f'{course_dir}/Assignments/Assignment 5/New assignment 5 - transfer functions/Assignment 5-2_transfer functions_v4answerkey.pdf'
+file_old=f'{student_visible_dir}/Assignments/Assignment05Solutions.pdf'
+out=shutil.copyfile(str(file_new),str(file_old))
+print(f'{out}\n{file_new}\n---\n')
+file_new=f'{course_dir}/Assignments/Assignment8/assignment8_2017wT2.pdf'
+file_old=f'{student_visible_dir}/Assignments/Assignment08new.pdf'
 out=shutil.copyfile(str(file_new),str(file_old))
 print(f'{out}\n{file_new}\n---\n')
 #
@@ -470,10 +482,10 @@ print(out)
 # file_new=f'{course_dir}/Classes/Day 17 GH My/Slides/Day16_GHvariabilityMy_Fall2017_preclass.pdf'
 # out=shutil.copyfile(str(file_new),str(file_old))
 # print(f'{out}\n{file_new}\n---\n')
-# file_old=f'{student_visible_dir}/Quiz Solutions/Day16QuizSolutions.pdf'
-# file_new=f'{course_dir}/Classes/Day 17 GH My/Quiz/Day16PreClassAssn_GH_My_Fall2017_answers.pdf'
-# out=shutil.copyfile(str(file_new),str(file_old))
-# print(f'{out}\n{file_new}\n---\n')
+file_old=f'{student_visible_dir}/Quiz Solutions/Day16QuizSolutions.pdf'
+file_new=f'{course_dir}/Classes/Day 17 GH My/Quiz/Day16PreClassAssn_GH_My_Fall2017_answers.pdf'
+out=shutil.copyfile(str(file_new),str(file_old))
+print(f'{out}\n{file_new}\n---\n')
 # #
 # # day 17
 # #
@@ -525,18 +537,22 @@ print(out)
 # #
 # #  Day 19
 # #
-# file_old=f'{student_visible_dir}/Pre Class Assignments/Day19PreClassSlides.pdf'
-# file_new=f'{course_dir}/Classes/Day 20 Paleo Analogues/Slides/Day19_PETM_Fall17_preclass.pdf'
-# out=shutil.copyfile(str(file_new),str(file_old))
-# print(f'{out}\n{file_new}\n---\n')
+file_old=f'{student_visible_dir}/Pre Class Slides/Day19PreClassSlides.pdf'
+file_new=f'{course_dir}/Classes/Day 20 Paleo Analogues/Slides/Day19_PETM_2017wT2_preclass.pdf'
+out=shutil.copyfile(str(file_new),str(file_old))
+print(f'{out}\n{file_new}\n---\n')
+file_old=f'{student_visible_dir}/Post Class Slides/Day19PostClassSlides.pdf'
+file_new=f'{course_dir}/Classes/Day 20 Paleo Analogues/Slides/Day19_PETM_Fall17_postclass.pdf'
+out=shutil.copyfile(str(file_new),str(file_old))
+print(f'{out}\n{file_new}\n---\n')
 # file_new=f'{course_dir}/Assignments/Assignment 7/Assn7_CarbonAccounting_Fall2017.pdf'
 # file_old=f'{student_visible_dir}/Assignments/Assignment07.pdf'
 # out=shutil.copyfile(str(file_new),str(file_old))
 # print(f'{out}\n{file_new}\n---\n')
-# file_old=f'{student_visible_dir}/Pre Class Assignments/Day19QuizSolutions.pdf'
-# file_new=f'{course_dir}/Classes/Day 20 Paleo Analogues/Quiz/Day19PreClassAssn_PETM_Fall2017_answers.pdf'
-# out=shutil.copyfile(str(file_new),str(file_old))
-# print('finished')
+file_old=f'{student_visible_dir}/Pre Class Assignments/Day19QuizSolutions.pdf'
+file_new=f'{course_dir}/Classes/Day 20 Paleo Analogues/Quiz/Day19PreClassAssn_PETM_Fall2017_answers.pdf'
+out=shutil.copyfile(str(file_new),str(file_old))
+print('finished')
 # # # newfile=f'/Users/phil/ownCloud/e340review/posts/day2_headheight/_build/day2_headheight.pdf'
 # # # oldfile=f'{student_visible_dir}/Miscellaneous Files/feedback_math.pdf'
 # # # out=shutil.copyfile(str(newfile),str(oldfile))
@@ -556,14 +572,60 @@ print(out)
 # # # file_old=f'{student_visible_dir}/Worksheets/Day13WorksheetSol.pdf'
 # # # out=shutil.copyfile(str(file_new),str(file_old))
 # # # print(f'{out}\n{file_new}\n---\n')
-# # file_old=f'{student_visible_dir}/Readings - non-textbook, non-journal article/Day23Reading.pdf'
-# # file_new=f'{course_dir}/Classes/Day_23_modeling/reading/Day23Reading.pdf'
-# # out=shutil.copyfile(str(file_new),str(file_old))
-# # print(f'{out}\n{file_new}\n---\n')
-# # file_old=f'{student_visible_dir}/Readings_text/dessler_ch8.pdf'
-# # file_new=f'{course_dir}/Classes/Day_23_modeling/reading/dessler_ch8.pdf'
-# # out=shutil.copyfile(str(file_new),str(file_old))
-# # print(f'{out}\n{file_new}\n---\n')
+# #
+# #  Day 21
+# #
+file_old=f'{student_visible_dir}/Pre Class Assignments/Day21PreClassAssignment.pdf'
+file_new=f'{course_dir}/Classes/Day 22 How do we know/Quiz/Day21PreClass_quiz_2017wT2.pdf'
+out=shutil.copyfile(str(file_new),str(file_old))
+print(out)
+file_old=f'{student_visible_dir}/Pre Class Slides/Day21PreClassSlides.pdf'
+file_new=f'{course_dir}/Classes/Day 22 How do we know/Slides/Day22_HowDoWeKnowItsUs_2017_wT2.pdf'
+out=shutil.copyfile(str(file_new),str(file_old))
+print(out)
+file_old=f'{student_visible_dir}/Post Class Slides/Day21PostClassSlides.pdf'
+file_new=f'{course_dir}/Classes/Day 22 How do we know/Slides/Day21_HowDoWeKnowItsUs_2017_wT2_postclass.pdf'
+out=shutil.copyfile(str(file_new),str(file_old))
+print(out)
+file_old=f'{student_visible_dir}/Quiz Solutions/Day21QuizSolutions.pdf'
+file_new=f'{course_dir}/Classes/Day 22 How do we know/Quiz/Day21PreClass_quiz_2017wT2_answers.pdf'
+out=shutil.copyfile(str(file_new),str(file_old))
+print(f'{out}\n{file_new}\n---\n')
+file_old=f'{student_visible_dir}/Worksheets/Day21Worksheet.pdf'
+file_new=f'{course_dir}/Classes/Day 22 How do we know/Worksheet/HowDoWeKnowItsUsWorksheet_QUALITATIVE_v2.pdf'
+out=shutil.copyfile(str(file_new),str(file_old))
+print(out)
+# #
+# #  Day 22
+# #
+file_old=f'{student_visible_dir}/Readings_text/dessler_ch8.pdf'
+file_new=f'{course_dir}/Classes/Day_23_modeling/reading/dessler_ch8.pdf'
+out=shutil.copyfile(str(file_new),str(file_old))
+print(f'{out}\n{file_new}\n---\n')
+file_old=f'{student_visible_dir}/Pre Class Assignments/Day22PreClassAssignment.pdf'
+file_new=f'{course_dir}/Classes/Day_23_modeling/quiz/Day22PreClassAssignment.pdf'
+out=shutil.copyfile(str(file_new),str(file_old))
+print(f'{out}\n{file_new}\n---\n')
+file_old=f'{student_visible_dir}/Quiz Solutions/Day22QuizSolutions.pdf'
+file_new=f'{course_dir}/Classes/Day_23_modeling/quiz/Day-22-Quiz_2017_wT2_answers.pdf'
+out=shutil.copyfile(str(file_new),str(file_old))
+print(f'{out}\n{file_new}\n---\n')
+file_old=f'{student_visible_dir}/Readings - non-textbook, non-journal article/Day22Reading.pdf'
+file_new=f'{course_dir}/Classes/Day_23_modeling/reading/Day22Reading.pdf'
+out=shutil.copyfile(str(file_new),str(file_old))
+print(f'{out}\n{file_new}\n---\n')
+file_old=f'{student_visible_dir}/Pre Class Slides/Day22PreClassSlides.pdf'
+file_new=f'{course_dir}/Classes/Day_23_modeling/slides/Day22_2017wT2.pdf'
+out=shutil.copyfile(str(file_new),str(file_old))
+print(f'{out}\n{file_new}\n---\n')
+file_old=f'{student_visible_dir}/Worksheets/Day22WorksheetSolutions.pdf'
+file_new=f'{course_dir}/Classes/Day_23_modeling/worksheet/kaya_worksheet_sol.pdf'
+out=shutil.copyfile(str(file_new),str(file_old))
+print(f'{out}\n{file_new}\n---\n')
+file_old=f'{student_visible_dir}/Post Class Slides/Day22PostClassSlides.pdf'
+file_new=f'{course_dir}/Classes/Day_23_modeling/Slides/Day22_2017wT2_postclass.pdf'
+out=shutil.copyfile(str(file_new),str(file_old))
+print(f'{out}\n{file_new}\n---\n')
 # # file_old=f'{student_visible_dir}/Readings_text/dessler_ch9.pdf'
 # # file_new=f'{course_dir}/Classes/Day_23_modeling/reading/dessler_ch9.pdf'
 # # out=shutil.copyfile(str(file_new),str(file_old))
@@ -596,24 +658,54 @@ print(out)
 # # file_new=f'{course_dir}/Classes/Day_23_modeling/worksheet/kaya_worksheet_sol.pdf'
 # # out=shutil.copyfile(str(file_new),str(file_old))
 # # print(f'{out}\n{file_new}\n---\n')
-# # file_old=f'{student_visible_dir}/Quiz Solutions/Day24QuizSolutions.pdf'
-# # file_new=f'{course_dir}/Classes/Day_24_forecasts/quiz/day24reading_solutions.pdf'
-# # out=shutil.copyfile(str(file_new),str(file_old))
-# # print(f'{out}\n{file_new}\n---\n')
-# # file_old=f'{student_visible_dir}/Pre Class Slides/Day24PreClassSlides.pdf'
-# # file_new=f'{course_dir}/Classes/Day_24_forecasts/slides/Day24_2017.pdf'
-# # out=shutil.copyfile(str(file_new),str(file_old))
-# # print(f'{out}\n{file_new}\n---\n')
+# #
+# #  Day 23
+# #
+file_old=f'{student_visible_dir}/Pre Class Assignments/Day23PreClassAssignment.pdf'
+file_new=f'{course_dir}/Classes/Day_24_forecasts/quiz/day23quiz_2017wT2.pdf'
+out=shutil.copyfile(str(file_new),str(file_old))
+print(f'{out}\n{file_new}\n---\n')
+file_old=f'{student_visible_dir}/Quiz Solutions/Day23QuizSolutions.pdf'
+file_new=f'{course_dir}/Classes/Day_24_forecasts/quiz/day23reading_2017wT2_solutions.pdf'
+out=shutil.copyfile(str(file_new),str(file_old))
+print(f'{out}\n{file_new}\n---\n')
+file_new=f'{course_dir}/Classes/Day_24_forecasts/slides/Day23Slides_2017wT2_pre.pdf'
+file_old=f'{student_visible_dir}/Pre Class Slides/Day23PreClassSlides.pdf'
+out=shutil.copyfile(str(file_new),str(file_old))
+print(f'{out}\n{file_new}\n---\n')
+file_old=f'{student_visible_dir}/Post Class Slides/Day23PostClassSlides.pdf'
+file_new=f'{course_dir}/Classes/Day_24_forecasts/slides/Day24Slides_2017post.pdf'
+out=shutil.copyfile(str(file_new),str(file_old))
+print(f'{out}\n{file_new}\n---\n')
+# #
+# #  Day 24
+# #
+file_old=f'{student_visible_dir}/Pre Class Assignments/Day24PreClassAssignment.pdf'
+file_new=f'{course_dir}/Classes/Day 25 Future Decisions/PreClassQuiz/Day25PreClassAssn_FutureDecisions_2017wT2.pdf'
+out=shutil.copyfile(str(file_new),str(file_old))
+print(f'{out}\n{file_new}\n---\n')
+file_old=f'{student_visible_dir}/Quiz Solutions/Day24QuizSolutions.pdf'
+file_new=f'{course_dir}/Classes/Day 25 Future Decisions/PreClassQuiz/Day25PreClassAssn_FutureDecisions_Fall17_answers.pdf'
+out=shutil.copyfile(str(file_new),str(file_old))
+print(f'{out}\n{file_new}\n---\n')
+file_old=f'{student_visible_dir}/Worksheets/Day24Worksheet.pdf'
+file_new=f'{course_dir}/Classes/Day 25 Future Decisions/Worksheet/FutureDecisionsWorksheet_v2.pdf'
+out=shutil.copyfile(str(file_new),str(file_old))
+print(f'{out}\n{file_new}\n---\n')
+file_old=f'{student_visible_dir}/Worksheets/Day24WorksheetSolutions.pdf'
+file_new=f'{course_dir}/Classes/Day 25 Future Decisions/Worksheet/FutureDecisionsWorksheet_v2sols.pdf'
+out=shutil.copyfile(str(file_new),str(file_old))
+print(f'{out}\n{file_new}\n---\n')
+file_old=f'{student_visible_dir}/Post Class Slides/Day24PostClassSlides.pdf'
+file_new=f'{course_dir}/Classes/Day 25 Future Decisions/Slides/Day24_FutureDecisions_2017wT2_postclass.pdf'
+out=shutil.copyfile(str(file_new),str(file_old))
+print(f'{out}\n{file_new}\n---\n')
 # # file_new=f'{course_dir}/practice_questions/equation_sheet_2017.pdf'
 # # file_old=f'{student_visible_dir}/Admin files/EOSC340EquationSheet.pdf'
 # # out=shutil.copyfile(str(file_new),str(file_old))
 # # print(f'{out}\n{file_new}\n---\n')
 # # file_new=f'{course_dir}/practice_questions/Practice_Physics_2017A.pdf'
 # # file_old=f'{student_visible_dir}/Practice Questions/Practice_Physics_Final_2017A.pdf'
-# # out=shutil.copyfile(str(file_new),str(file_old))
-# # print(f'{out}\n{file_new}\n---\n')
-# # file_old=f'{student_visible_dir}/Post Class Slides/Day23PostClassSlides.pdf'
-# # file_new=f'{course_dir}/Classes/Day_23_modeling/Slides/Day23_2017.pdf'
 # # out=shutil.copyfile(str(file_new),str(file_old))
 # # print(f'{out}\n{file_new}\n---\n')
 # # file_old=f'{student_visible_dir}/Post Class Slides/Day24PostClassSlides.pdf'
@@ -632,7 +724,10 @@ print(out)
 # # file_old=f'{student_visible_dir}/Pre Class Slides/Day26PreClassSlides.pdf'
 # # out=shutil.copyfile(str(file_new),str(file_old))
 # # print(f'{out}\n{file_new}\n---\n')
-
+file_new=f'{course_dir}/practice_questions/midterm2_practice_solutions_paleo.pdf'
+file_old=f'{student_visible_dir}/Practice Questions/midterm2_practice_solutions_paleo.pdf'
+out=shutil.copyfile(str(file_new),str(file_old))
+print(f'{out}\n{file_new}\n---\n')
 # # file_old=f'{student_visible_dir}/Post Class Slides/Day23PostClassSlides.pdf'
 # # file_new=f'{course_dir}/Classes/Day_23_modeling/Slides/Day23_2017.pdf'
 # # out=shutil.copyfile(str(file_new),str(file_old))
