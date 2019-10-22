@@ -33,14 +33,10 @@ For classes that involve student programming, we've adopted DSCI 100's use of  [
 
 ## Example
 
+* Here is the pdf version of a quiz solution:  [quiz2_answers.pdf](
+https://www.dropbox.com/s/0j6pw4obeep7v5x/quiz2_answers.pdf?dl=0)
 
-
-
-## Approach
-
-here is the approach and now this and this and this
-
-and this
+* Here is the 
 
 
 
