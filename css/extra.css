@@ -17,7 +17,12 @@ nav {
 }
 
 footer {
-    margin: 5em 0 1em 0;
+    width:100%;
+    position: fixed;
+    bottom: -0.6em;
+    left: 0;
+    margin: 5em 0px 0px 0px;
+    padding: 0px;
 }
 
 pre {
