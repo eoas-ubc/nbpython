@@ -501,10 +501,14 @@ file_old=student_visible_dir / Path('Pre Class Slides/Day12PreClassSlides.pdf')
 file_new=course_dir / Path('Classes/Day_12_feedbacks/Slides/Day12_2019t1_postclass.pdf')
 out=shutil.copyfile(file_new,file_old)
 print(f'{out}\n{file_new}\n---\n')
-# # # #
-# # #
-# # # # Day 13 --- Midterm 1
-# # # #
+# #
+#
+# # Day 13 --- quiz 2
+# #
+file_new=course_dir / Path('Exams/quiz2_2019t1/quiz2_2019t1_answers.pdf')
+file_old=student_visible_dir / Path('Practice Questions/quiz2_answers.pdf')
+out=shutil.copyfile(file_new,file_old)
+print(f'{out}\n{file_new}\n---\n')
 # # #
 # # # # Day 14 --- Climate Sensitivity
 # # # #
