@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="generator" content="pandoc">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-                                <title>Jupyter notebooks as quiz question sourcefiles</title>
+                                <title>Jupyter notebooks as quiz question source files</title>
         
         <!-- Yahoo! CDN combo URL for selected Pure.css modules -->
         <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css">
@@ -21,34 +21,61 @@
                     <!-- page content begins here -->
 
                                                                                                                         <header>
-                        <h1 class="title">Jupyter notebooks as quiz question sourcefiles</h1>
+                        <h1 class="title">Jupyter notebooks as quiz question source files</h1>
                                                                                                                     </header>
                                                                                 <section id="background" class="level2">
 <h2>Background</h2>
-<p>In the worst case scenario, my workflow for posting a quiz on canvas used to involve four separate source documents:</p>
+<p>In the worst case scenario, my work-flow for posting a quiz on canvas used to involve four separate source documents:</p>
 <ol type="1">
 <li><p>A docx file containing quiz questions with answers/explanations.</p></li>
-<li><p>A separate docx file with the answers stripped that was posted for students to work from prior to enetering their answers on canvas.</p></li>
+<li><p>A separate docx file with the answers stripped that was posted for students to work from prior to entering their answers on canvas.</p></li>
 <li><p>A jupyter python notebook with the numeric answers worked out</p></li>
 <li><p>A canvas quiz with the question entered via the canvas web interface</p></li>
 </ol>
 <p>Fortunately, three of these documents are unnecessary. My current workflow is:</p>
 <ol type="1">
-<li><p>Write a <a href="https://jupyter.org/">jupyter notebook</a> with the quiz questions and answers. This is a mix of markdown cells for the narative/images, and python cells for the actual calculations. Use jupyter cell metadata to tag each cell as a question or answer, along with the question number and, if multiple choice, the correct answer.</p></li>
-<li><p>Save the notebook as a python file using <a href="https://github.com/mwouts/jupytext">jupytext</a> (This is automatic, since the jupytext plugin overrides jupyter’s <code>content_mananger_class</code>).</p></li>
+<li><p>Write a <a href="https://jupyter.org/">jupyter notebook</a> with the quiz questions and answers. This is a mix of markdown cells for the narrative/images, and python cells for the actual calculations. Use jupyter cell metadata to tag each cell as a question or answer, along with the question number and, if multiple choice, the correct answer.</p></li>
+<li><p>Save the notebook as a python file using <a href="https://github.com/mwouts/jupytext">jupytext</a> (This is automatic, since the jupytext plug-in overrides jupyter’s <code>content_manager_class</code>).</p></li>
 <li><p>Commit to git</p></li>
 <li><p>Generate the student version of the quiz by filtering out the answer cells and use <code>jupyter nbconvert</code> to produce a paginated pdf with headers.</p></li>
-<li><p>(to be done) Generate the canvas version of the quiz using the <a href="http://www.r-exams.org/">r-exams</a> canvas qti writer.</p></li>
+<li><p>(to be done) Generate the canvas version of the quiz using the <a href="http://www.r-exams.org/">r-exams</a> canvas QTI writer.</p></li>
 </ol>
-<p>For classes that involve student programming, we’ve adopted DSCI 100’s use of <a href="https://nbgrader.readthedocs.io/en/stable/">nbgrader</a>, which is as you know is just a (much) more elaborate version of the workflow above.</p>
+<p>For classes that involve student programming, we’ve adopted DSCI 100’s use of <a href="https://nbgrader.readthedocs.io/en/stable/">nbgrader</a>, which as you know is just a (much) more elaborate version of the work-flow above.</p>
 </section>
 <section id="example" class="level2">
 <h2>Example</h2>
+<ul>
+<li><p>Here is the final pdf version of a quiz solution: <a href="https://www.dropbox.com/s/0j6pw4obeep7v5x/quiz2_answers.pdf?dl=0">quiz2_answers.pdf</a></p></li>
+<li><p>Here is the jupytext python version of that notebook: <a href="https://github.com/eoas-ubc/nbpython/blob/master/notebooks/quiz2_2019t1.py#L98">quiz2_answers.py</a></p></li>
+<li><p>Here is a python function to strip all answer cells from the student version: <a href="https://github.com/eoas-ubc/nbpython/blob/master/e340lib/noteutils.py#L12">strip_answers</a>, which is called from the command line with <a href="https://github.com/eoas-ubc/nbpython/blob/master/e340lib/strip_answers.py">strip_answers.py</a></p></li>
+<li><p>We can also re-order cells to produce B and C versions of an in-class quiz, and automatically generate Remark grading keys from the cell answer metadata</p></li>
+</ul>
 </section>
-<section id="approach" class="level2">
-<h2>Approach</h2>
-<p>here is the approach and now this and this and this</p>
-<p>and this</p>
+<section id="workflow-for-clicker-questions" class="level2">
+<h2>Workflow for clicker questions</h2>
+<p>There is a similar single source problem for clicker questions, which currently exist in 3 distinct powerpoint versions:</p>
+<ol type="1">
+<li><p>The original question with the clicker choices and the answer</p></li>
+<li><p>The posted pre-class version, which has the question but omits the choices</p></li>
+<li><p>The posted post-class version, which has the question and the choices, but not the answer</p></li>
+</ol>
+<p>All of these can be generated by a single jupyter notebook, and written to powerpoint using <a href="https://python-pptx.readthedocs.io/en/latest/">python-pptx</a></p>
+</section>
+<section id="output-for-canvas-and-prairielearn" class="level2">
+<h2>Output for Canvas and PrairieLearn</h2>
+<p>As mentioned above – we can upload quiz questions in QTI format using <a href="http://www.r-exams.org/">r-exams</a>. It should be fairly simple to write similar post-processing code to turn a notebook markdown question into a format importable into PrairieLearn.</p>
+</section>
+<section id="summary" class="level2">
+<h2>Summary</h2>
+<p>Life is better if your quiz question bank is:</p>
+<ol type="1">
+<li><p>The sole source of all versions of the quiz</p></li>
+<li><p>Executable so you can generate multiple versions of a question (ala r-exams)</p></li>
+<li><p>Written in markdown instead of a combination of docx and pptx</p></li>
+<li><p>Searchable by simple tools like grep</p></li>
+<li><p>Version controlled with git</p></li>
+<li><p>Autogradable (nbgrader)</p></li>
+</ol>
 </section>
                     
                     <!-- page content ends here -->
@@ -57,7 +84,7 @@
             </div>     <!-- pure-g -->
         </section> <!-- page-content -->
         <div class="pure-g">
-            <footer><a href="https://bitfragment.github.io/mindoc">mindoc</a> v1.1.0</footer>
+            <footer><p> </p> </footer>
         </div>
         <script src="js/mindoc.js?__inline=true"></script>
 
