@@ -33,3 +33,19 @@ def update_headers(nb_obj,lhead = " ", chead = " "):
     latex_meta["latex_metadata"] = header_dict
     nb_obj['metadata'].update(latex_meta)
     return nb_obj
+
+def get_key(nb_obj):
+    """
+    return the key for eqch question
+    """
+    new_list = []
+    index=1
+    for count,the_cell in enumerate(nb_obj['cells']):
+        if 'ctype' in the_cell['metadata']:
+            if the_cell['metadata']['ctype']=="answer":
+                if 'key' in the_cell['metadata']:
+                    qnum = the_cell['metadata']['qnum']
+                    answer = the_cell['metadata']['key']
+                    new_list.append({'index':index,'qnum':qnum,'answer':answer})
+                    index+=1
+    return new_list
