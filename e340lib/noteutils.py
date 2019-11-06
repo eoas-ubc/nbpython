@@ -38,14 +38,33 @@ def get_key(nb_obj):
     """
     return the key for eqch question
     """
+    new_dict = {}
+    for count,the_cell in enumerate(nb_obj['cells']):
+        if 'ctype' in the_cell['metadata']:
+            if the_cell['metadata']['ctype']=="answer":
+                print(the_cell['metadata'])
+                if 'key' in the_cell['metadata']:
+                    qnum = the_cell['metadata']['qnum']
+                    answer = the_cell['metadata']['key']
+                    if qnum in new_dict:
+                        raise ValueError(f"found multiple qnums for {qnum}")
+                    new_dict[qnum] = answer
+    
+    return new_dict
+
+
+def get_qorder(nb_obj):
+    """
+    return the exam A order for eqch B question
+    """
     new_list = []
     index=1
     for count,the_cell in enumerate(nb_obj['cells']):
         if 'ctype' in the_cell['metadata']:
-            if the_cell['metadata']['ctype']=="answer":
-                if 'key' in the_cell['metadata']:
+            if the_cell['metadata']['ctype']=="question":
+                print(the_cell['metadata'])
+                if 'qnum' in the_cell['metadata']:
                     qnum = the_cell['metadata']['qnum']
-                    answer = the_cell['metadata']['key']
-                    new_list.append({'index':index,'qnum':qnum,'answer':answer})
+                    new_list.append({'qnumB':index,'qnumA':qnum})
                     index+=1
     return new_list
