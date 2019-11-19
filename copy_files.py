@@ -1,34 +1,35 @@
-print("what is going on")
 import shutil
-import os, sys
+import sys
 from pathlib import Path
 import os
 
-root_e340_fall=os.environ['E340root']
-root_dropbox=os.environ['E340dropbox']
+root_e340_fall = os.environ["E340root"]
+root_dropbox = os.environ["E340dropbox"]
 
-the_file=Path(__file__).resolve()
+the_file = Path(__file__).resolve()
 e340_fall = the_file.parent.parent
-print('pha')
-course_dir = root_e340_fall / Path('e340_2019_fall')
-student_visible_dir = root_dropbox / Path('e340 FILES FOR CONNECT')
+print("pha")
+course_dir = root_e340_fall / Path("e340_2019_fall")
+student_visible_dir = root_dropbox / Path("e340 FILES FOR CONNECT")
 print(f"debug")
 print(f"student_visible_dir is: {student_visible_dir}")
 
 #
 #  Assignments
 #
-file_new= course_dir / Path('Assignments/Assignment1/Assignment01_2019t1.pdf')
-file_old= student_visible_dir / Path('Assignments/Assignment01.pdf')
-out=shutil.copyfile(file_new,file_old)
-print(f'{out}\n{file_new}\n---\n')
+file_new = course_dir / Path("Assignments/Assignment1/Assignment01_2019t1.pdf")
+file_old = student_visible_dir / Path("Assignments/Assignment01.pdf")
+out = shutil.copyfile(file_new, file_old)
+print(f"{out}\n{file_new}\n---\n")
 # file_new= course_dir / Path('Assignments/Assignment1/lowe_gregory.pdf')
 # file_old= student_visible_dir / Path('Assignments/lowe_gregory.pdf')
 # out=shutil.copyfile(file_new,file_old)
-file_new=course_dir / Path('Assignments/Assignment1/Assignment01Solutions_2018wT2.pdf')
-file_old=student_visible_dir / Path('Assignments/Assignment01Solutions.pdf')
-out=shutil.copyfile(file_new,file_old)
-print(f'{out}\n{file_new}\n---\n')
+file_new = course_dir / Path(
+    "Assignments/Assignment1/Assignment01Solutions_2018wT2.pdf"
+)
+file_old = student_visible_dir / Path("Assignments/Assignment01Solutions.pdf")
+out = shutil.copyfile(file_new, file_old)
+print(f"{out}\n{file_new}\n---\n")
 # file_new=course_dir / Path('Assignments/Assignment2/Assignment02_2018t2.pdf')
 # file_old= student_visible_dir/ Path('Assignments/Assignment02.pdf')
 # out=shutil.copyfile(file_new,file_old)
@@ -37,14 +38,14 @@ print(f'{out}\n{file_new}\n---\n')
 # file_old=student_visible_dir / Path('Assignments/Assignment02Solutions.pdf')
 # out=shutil.copyfile(file_new,file_old)
 # print(f'{out}\n{file_new}\n---\n')
-file_new=course_dir / Path('Assignments/Assignment3/assignment3_2019t1_student.pdf')
-file_old=student_visible_dir / Path('Assignments/Assignment03.pdf')
-out=shutil.copyfile(file_new,file_old)
-print(f'{out}\n{file_new}\n---\n')
-file_new=course_dir / Path('Assignments/Assignment3/assignment3_2019t1_solution.pdf')
-file_old=student_visible_dir / Path('Assignments/Assignment03Solutions.pdf')
-out=shutil.copyfile(file_new,file_old)
-print(f'{out}\n{file_new}\n---\n')
+file_new = course_dir / Path("Assignments/Assignment3/assignment3_2019t1_student.pdf")
+file_old = student_visible_dir / Path("Assignments/Assignment03.pdf")
+out = shutil.copyfile(file_new, file_old)
+print(f"{out}\n{file_new}\n---\n")
+file_new = course_dir / Path("Assignments/Assignment3/assignment3_2019t1_solution.pdf")
+file_old = student_visible_dir / Path("Assignments/Assignment03Solutions.pdf")
+out = shutil.copyfile(file_new, file_old)
+print(f"{out}\n{file_new}\n---\n")
 # # file_new=course_dir / Path('Assignments/Assignment3/Assignment03_18t2_sln.pdf')
 # # file_old=student_visible_dir / Path('Assignments/Assignment03Solutions.pdf')
 # # out=shutil.copyfile(file_new,file_old)
@@ -92,18 +93,20 @@ print(f'{out}\n{file_new}\n---\n')
 # # #
 # # # day 1
 # # #
-file_new=course_dir / Path('Admin_-_no_student_info/EOSC340LearningGoals_Fall2019.pdf')
-file_old=student_visible_dir / Path('Admin files/EOSC340LearningGoals.pdf')
-out=shutil.copyfile(file_new,file_old)
-print(f'{out}\n{file_new}\n---\n')
-file_new=course_dir / Path('Admin_-_no_student_info/EOSC340_Syllabus_Fall2019.pdf')
-file_old=student_visible_dir / Path('Admin files/EOSC340_Syllabus.pdf')
-out=shutil.copyfile(file_new,file_old)
-print(f'{out}\n{file_new}\n---\n')
-file_new=course_dir / Path('Admin_-_no_student_info/python/2019_fall.pdf')
-file_old=student_visible_dir / Path('Admin files/EOSC340Schedule.pdf')
-out=shutil.copyfile(file_new,file_old)
-print(f'{out}\n{file_new}\n---\n')
+file_new = course_dir / Path(
+    "Admin_-_no_student_info/EOSC340LearningGoals_Fall2019.pdf"
+)
+file_old = student_visible_dir / Path("Admin files/EOSC340LearningGoals.pdf")
+out = shutil.copyfile(file_new, file_old)
+print(f"{out}\n{file_new}\n---\n")
+file_new = course_dir / Path("Admin_-_no_student_info/EOSC340_Syllabus_Fall2019.pdf")
+file_old = student_visible_dir / Path("Admin files/EOSC340_Syllabus.pdf")
+out = shutil.copyfile(file_new, file_old)
+print(f"{out}\n{file_new}\n---\n")
+file_new = course_dir / Path("Admin_-_no_student_info/python/2019_fall.pdf")
+file_old = student_visible_dir / Path("Admin files/EOSC340Schedule.pdf")
+out = shutil.copyfile(file_new, file_old)
+print(f"{out}\n{file_new}\n---\n")
 # # # file_new=course_dir / Path('Admin_-_no_student_info/EOSC340Schedule.pdf') used schedule_spring2019 in e340_2018t2
 # # # file_old=student_visible_dir / Path('Admin files/EOSC340Schedule.pdf')
 # # # out=shutil.copyfile(file_new,file_old)
@@ -273,10 +276,12 @@ print(f'{out}\n{file_new}\n---\n')
 # # # file_new=course_dir / Path('Classes/Day_06_greenhouse2/Slides/Day06Slides_18wt_preclass.pdf')
 # # # out=shutil.copyfile(file_new,file_old)
 # # # print(f'{out}\n{file_new}\n---\n')
-file_old=student_visible_dir / Path('Post Class Slides/Day06PostClassSlides.pdf')
-file_new=course_dir / Path('Classes/Day_06_greenhouse2/Slides/day06Slides_19t1_postclass.pdf')
-out=shutil.copyfile(file_new,file_old)
-print(f'{out}\n{file_new}\n---\n')
+file_old = student_visible_dir / Path("Post Class Slides/Day06PostClassSlides.pdf")
+file_new = course_dir / Path(
+    "Classes/Day_06_greenhouse2/Slides/day06Slides_19t1_postclass.pdf"
+)
+out = shutil.copyfile(file_new, file_old)
+print(f"{out}\n{file_new}\n---\n")
 # # # #
 # # # # day 7
 # # # #
@@ -288,18 +293,22 @@ print(f'{out}\n{file_new}\n---\n')
 # # file_new=course_dir / Path('Classes/Day_07_greenhouse3/quiz/Day07Quiz_18wT2.pdf')
 # # out=shutil.copyfile(file_new,file_old)
 # # print(f'{out}\n{file_new}\n---\n')
-file_new=course_dir / Path('Classes/Day_07_greenhouse3/slides/Day07Slides_19t1_preclass.pdf')
-file_old=student_visible_dir / Path('Pre Class Slides/Day07PreClassSlides.pdf')
-out=shutil.copyfile(file_new,file_old)
-print(f'{out}\n{file_new}\n---\n')
-file_new=course_dir / Path('Classes/Day_07_greenhouse3/slides/Day_07_layers.pdf')
-file_old=student_visible_dir / Path('Post Class Slides/Day_07_layers.pdf')
-out=shutil.copyfile(file_new,file_old)
-print(f'{out}\n{file_new}\n---\n')
-file_new=course_dir / Path('Classes/Day_07_greenhouse3/slides/Day07Slides_19t1_postclass.pdf')
-file_old=student_visible_dir / Path('Post Class Slides/Day07PostClassSlides.pdf')
-out=shutil.copyfile(file_new,file_old)
-print(f'{out}\n{file_new}\n---\n')
+file_new = course_dir / Path(
+    "Classes/Day_07_greenhouse3/slides/Day07Slides_19t1_preclass.pdf"
+)
+file_old = student_visible_dir / Path("Pre Class Slides/Day07PreClassSlides.pdf")
+out = shutil.copyfile(file_new, file_old)
+print(f"{out}\n{file_new}\n---\n")
+file_new = course_dir / Path("Classes/Day_07_greenhouse3/slides/Day_07_layers.pdf")
+file_old = student_visible_dir / Path("Post Class Slides/Day_07_layers.pdf")
+out = shutil.copyfile(file_new, file_old)
+print(f"{out}\n{file_new}\n---\n")
+file_new = course_dir / Path(
+    "Classes/Day_07_greenhouse3/slides/Day07Slides_19t1_postclass.pdf"
+)
+file_old = student_visible_dir / Path("Post Class Slides/Day07PostClassSlides.pdf")
+out = shutil.copyfile(file_new, file_old)
+print(f"{out}\n{file_new}\n---\n")
 # # file_new=course_dir / Path('Classes/Day_07_greenhouse3/slides/Day07Slides_18wt2_postclass.pdf')
 # # file_old=student_visible_dir / Path('Post Class Slides/Day07PostClassSlides.pdf')
 # # out=shutil.copyfile(file_new,file_old)
@@ -311,26 +320,32 @@ print(f'{out}\n{file_new}\n---\n')
 # # # #
 # # # # day 8
 # # # #
-file_new=course_dir / Path('Classes/Day_08_greenhouse4/slides/Day08Slides_19t1_preclass.pdf')
-file_old=student_visible_dir / Path('Pre Class Slides/Day08PreClassSlides.pdf')
-out=shutil.copyfile(file_new,file_old)
-print(f'{out}\n{file_new}\n---\n')
+file_new = course_dir / Path(
+    "Classes/Day_08_greenhouse4/slides/Day08Slides_19t1_preclass.pdf"
+)
+file_old = student_visible_dir / Path("Pre Class Slides/Day08PreClassSlides.pdf")
+out = shutil.copyfile(file_new, file_old)
+print(f"{out}\n{file_new}\n---\n")
 # # # file_new=course_dir / Path('Classes/Day_08_greenhouse4/quiz/day8_student_questions.pdf')
 # # # file_old=student_visible_dir / Path('Student Questions & Comments on Pre Class Quiz/Day08StudentCommentsPreClassQuiz.pdf')
 # # # out=shutil.copyfile(file_new,file_old)
 # # # print(f'{out}\n{file_new}\n---\n')
-file_old=student_visible_dir / Path('Pre Class Assignments/Day08PreClassAssignment.pdf')
-file_new=course_dir / Path('Classes/Day_08_greenhouse4/quiz/Day08Quiz_2019t1.pdf')
-out=shutil.copyfile(file_new,file_old)
-print(f'{out}\n{file_new}\n---\n')
+file_old = student_visible_dir / Path(
+    "Pre Class Assignments/Day08PreClassAssignment.pdf"
+)
+file_new = course_dir / Path("Classes/Day_08_greenhouse4/quiz/Day08Quiz_2019t1.pdf")
+out = shutil.copyfile(file_new, file_old)
+print(f"{out}\n{file_new}\n---\n")
 # # file_old=student_visible_dir / Path('Quiz Solutions/Day08QuizSolutions.pdf')
 # # file_new=course_dir / Path('Classes/Day_08_greenhouse4/quiz/Day08Quiz_2018wT2_sln.pdf')
 # # out=shutil.copyfile(file_new,file_old)
 # # print(f'{out}\n{file_new}\n---\n')
-file_old=student_visible_dir / Path('Readings - non-textbook, non-journal article/Day08Reading.pdf')
-file_new=course_dir / Path('Classes/Day_08_greenhouse4/reading/Day08Reading_19t1.pdf')
-out=shutil.copyfile(file_new,file_old)
-print(f'{out}\n{file_new}\n---\n')
+file_old = student_visible_dir / Path(
+    "Readings - non-textbook, non-journal article/Day08Reading.pdf"
+)
+file_new = course_dir / Path("Classes/Day_08_greenhouse4/reading/Day08Reading_19t1.pdf")
+out = shutil.copyfile(file_new, file_old)
+print(f"{out}\n{file_new}\n---\n")
 # # file_old=student_visible_dir / Path('Worksheets/Day08Worksheet.pdf')
 # # file_new=course_dir / Path('Classes/Day_08_greenhouse4/Worksheet/Day08Worksheet_2018wt2.pdf')
 # # out=shutil.copyfile(file_new,file_old)
@@ -346,47 +361,57 @@ print(f'{out}\n{file_new}\n---\n')
 # # # #
 # # # #  day 9
 # # # #
-file_old=student_visible_dir / Path('Readings - non-textbook, non-journal article/Day09Reading.pdf')
-file_new=course_dir / Path('Classes/Day_09_temperature/reading/Day09Reading.pdf')
-out=shutil.copyfile(file_new,file_old)
-print(f'{out}\n{file_new}\n---\n')
-file_old=student_visible_dir / Path('Pre Class Assignments/Day09PreClassAssignment.pdf')
-file_new=course_dir / Path('Classes/Day_09_temperature/quiz/Day_09_quiz_2019t1.pdf')
-out=shutil.copyfile(file_new,file_old)
-print(f'{out}\n{file_new}\n---\n')
-file_new=course_dir / Path('Classes/Day_09_temperature/quiz/Day_09_quiz_2019t1_sln.pdf')
-file_old=student_visible_dir / Path('Quiz Solutions/Day09QuizSolutions.pdf')
-out=shutil.copyfile(file_new,file_old)
-print(f'{out}\n{file_new}\n---\n')
-file_old=student_visible_dir / Path('Pre Class Slides/Day09PreClassSlides.pdf')
-file_new=course_dir / Path('Classes/Day_09_temperature/slides/Day09Slides2019t1_preclass.pdf')
-out=shutil.copyfile(file_new,file_old)
-print(f'{out}\n{file_new}\n---\n')
-file_old=student_visible_dir / Path('Post Class Slides/Day09PostClassSlides.pdf')
-file_new=course_dir / Path('Classes/Day_09_temperature/slides/Day09Slides2019t1_preclass.pdf')
-out=shutil.copyfile(file_new,file_old)
-print(f'{out}\n{file_new}\n---\n')
+file_old = student_visible_dir / Path(
+    "Readings - non-textbook, non-journal article/Day09Reading.pdf"
+)
+file_new = course_dir / Path("Classes/Day_09_temperature/reading/Day09Reading.pdf")
+out = shutil.copyfile(file_new, file_old)
+print(f"{out}\n{file_new}\n---\n")
+file_old = student_visible_dir / Path(
+    "Pre Class Assignments/Day09PreClassAssignment.pdf"
+)
+file_new = course_dir / Path("Classes/Day_09_temperature/quiz/Day_09_quiz_2019t1.pdf")
+out = shutil.copyfile(file_new, file_old)
+print(f"{out}\n{file_new}\n---\n")
+file_new = course_dir / Path(
+    "Classes/Day_09_temperature/quiz/Day_09_quiz_2019t1_sln.pdf"
+)
+file_old = student_visible_dir / Path("Quiz Solutions/Day09QuizSolutions.pdf")
+out = shutil.copyfile(file_new, file_old)
+print(f"{out}\n{file_new}\n---\n")
+file_old = student_visible_dir / Path("Pre Class Slides/Day09PreClassSlides.pdf")
+file_new = course_dir / Path(
+    "Classes/Day_09_temperature/slides/Day09Slides2019t1_preclass.pdf"
+)
+out = shutil.copyfile(file_new, file_old)
+print(f"{out}\n{file_new}\n---\n")
+file_old = student_visible_dir / Path("Post Class Slides/Day09PostClassSlides.pdf")
+file_new = course_dir / Path(
+    "Classes/Day_09_temperature/slides/Day09Slides2019t1_preclass.pdf"
+)
+out = shutil.copyfile(file_new, file_old)
+print(f"{out}\n{file_new}\n---\n")
 # # # #
 # # #
 # # #
 # # # quiz 1
 # # #
-file_new=course_dir / Path('practice_questions/quiz1/Practice_quiz1_2019t1.pdf')
-file_old=student_visible_dir / Path('Practice Questions/Practice_Mid1_set1.pdf')
-out=shutil.copyfile(file_new,file_old)
-print(f'{out}\n{file_new}\n---\n')
-file_new=course_dir / Path('practice_questions/quiz1/quiz1_equation_sheet_2019t1.pdf')
-file_old=student_visible_dir / Path('Practice Questions/quiz1_equation_sheet.pdf')
-out=shutil.copyfile(file_new,file_old)
-print(f'{out}\n{file_new}\n---\n')             
-file_new=course_dir / Path('Exams/quiz2_2019t1/e340_quiz2_2019t1_equations.pdf')
-file_old=student_visible_dir / Path('Practice Questions/quiz2_equation_sheet.pdf')
-out=shutil.copyfile(file_new,file_old)
-print(f'{out}\n{file_new}\n---\n')
-file_new=course_dir / Path('Exams/quiz1_2019t1/quiz1_vera_answers.pdf')
-file_old=student_visible_dir / Path('Practice Questions/quiz1_vera_answers.pdf')
-out=shutil.copyfile(file_new,file_old)
-print(f'{out}\n{file_new}\n---\n')
+file_new = course_dir / Path("practice_questions/quiz1/Practice_quiz1_2019t1.pdf")
+file_old = student_visible_dir / Path("Practice Questions/Practice_Mid1_set1.pdf")
+out = shutil.copyfile(file_new, file_old)
+print(f"{out}\n{file_new}\n---\n")
+file_new = course_dir / Path("practice_questions/quiz1/quiz1_equation_sheet_2019t1.pdf")
+file_old = student_visible_dir / Path("Practice Questions/quiz1_equation_sheet.pdf")
+out = shutil.copyfile(file_new, file_old)
+print(f"{out}\n{file_new}\n---\n")
+file_new = course_dir / Path("Exams/quiz2_2019t1/e340_quiz2_2019t1_equations.pdf")
+file_old = student_visible_dir / Path("Practice Questions/quiz2_equation_sheet.pdf")
+out = shutil.copyfile(file_new, file_old)
+print(f"{out}\n{file_new}\n---\n")
+file_new = course_dir / Path("Exams/quiz1_2019t1/quiz1_vera_answers.pdf")
+file_old = student_visible_dir / Path("Practice Questions/quiz1_vera_answers.pdf")
+out = shutil.copyfile(file_new, file_old)
+print(f"{out}\n{file_new}\n---\n")
 # # file_new=course_dir / Path('practice_questions/Practice_Mid1_set2_2018t2.pdf')
 # # file_old=student_visible_dir / Path('Practice Questions/Practice_Mid1_set2.pdf')
 # # out=shutil.copyfile(file_new,file_old)
@@ -397,118 +422,154 @@ print(f'{out}\n{file_new}\n---\n')
 # # print(f'{out}\n{file_new}\n---\n')
 # # #
 ##  quiz 1 set 1
-file_new=course_dir / Path('practice_questions/quiz1/Practice_quiz1_2019t1.pdf')
-file_old=student_visible_dir / Path('Practice Questions/Practice_Mid1_set1.pdf')
-out=shutil.copyfile(file_new,file_old)
-print(f'{out}\n{file_new}\n---\n')
-file_new=course_dir / Path('practice_questions/quiz1/Practice_quiz1_2019t1_sln.pdf')
-file_old=student_visible_dir / Path('Practice Questions/Practice_Mid1_set1_sols.pdf')
-out=shutil.copyfile(file_new,file_old)
-print(f'{out}\n{file_new}\n---\n')
+file_new = course_dir / Path("practice_questions/quiz1/Practice_quiz1_2019t1.pdf")
+file_old = student_visible_dir / Path("Practice Questions/Practice_Mid1_set1.pdf")
+out = shutil.copyfile(file_new, file_old)
+print(f"{out}\n{file_new}\n---\n")
+file_new = course_dir / Path("practice_questions/quiz1/Practice_quiz1_2019t1_sln.pdf")
+file_old = student_visible_dir / Path("Practice Questions/Practice_Mid1_set1_sols.pdf")
+out = shutil.copyfile(file_new, file_old)
+print(f"{out}\n{file_new}\n---\n")
 ##  quiz 1 set 2
-file_new=course_dir / Path('practice_questions/quiz1/Practice_quiz1_set2_2019t1.pdf')
-file_old=student_visible_dir / Path('Practice Questions/Practice_Mid1_set2.pdf')
-out=shutil.copyfile(file_new,file_old)
-print(f'{out}\n{file_new}\n---\n')
-file_new=course_dir / Path('practice_questions/quiz1/Practice_Mid1_set2_sols.pdf')
-file_old=student_visible_dir / Path('Practice Questions/Practice_Mid1_set2_sols.pdf')
-out=shutil.copyfile(file_new,file_old)
-print(f'{out}\n{file_new}\n---\n')
+file_new = course_dir / Path("practice_questions/quiz1/Practice_quiz1_set2_2019t1.pdf")
+file_old = student_visible_dir / Path("Practice Questions/Practice_Mid1_set2.pdf")
+out = shutil.copyfile(file_new, file_old)
+print(f"{out}\n{file_new}\n---\n")
+file_new = course_dir / Path("practice_questions/quiz1/Practice_Mid1_set2_sols.pdf")
+file_old = student_visible_dir / Path("Practice Questions/Practice_Mid1_set2_sols.pdf")
+out = shutil.copyfile(file_new, file_old)
+print(f"{out}\n{file_new}\n---\n")
 ## quiz 2 set 1
-file_new=course_dir / Path('practice_questions/quiz2/practice_quiz2_set1_students.pdf')
-file_old=student_visible_dir / Path('Practice Questions/practice_quiz2_set1.pdf')
-out=shutil.copyfile(file_new,file_old)
-print(f'{out}\n{file_new}\n---\n')
-file_new=course_dir / Path('practice_questions/quiz2/practice_quiz2_set1.pdf')
-file_old=student_visible_dir / Path('Practice Questions/practice_quiz2_set1_solutions.pdf')
-out=shutil.copyfile(file_new,file_old)
-print(f'{out}\n{file_new}\n---\n')
+file_new = course_dir / Path(
+    "practice_questions/quiz2/practice_quiz2_set1_students.pdf"
+)
+file_old = student_visible_dir / Path("Practice Questions/practice_quiz2_set1.pdf")
+out = shutil.copyfile(file_new, file_old)
+print(f"{out}\n{file_new}\n---\n")
+file_new = course_dir / Path("practice_questions/quiz2/practice_quiz2_set1.pdf")
+file_old = student_visible_dir / Path(
+    "Practice Questions/practice_quiz2_set1_solutions.pdf"
+)
+out = shutil.copyfile(file_new, file_old)
+print(f"{out}\n{file_new}\n---\n")
 ## quiz 2 set 2
-file_new=course_dir / Path('practice_questions/quiz2/practice_quiz2_set2_students.pdf')
-file_old=student_visible_dir / Path('Practice Questions/practice_quiz2_set2.pdf')
-out=shutil.copyfile(file_new,file_old)
-print(f'{out}\n{file_new}\n---\n')
-file_new=course_dir / Path('practice_questions/quiz2/practice_quiz2_set2.pdf')
-file_old=student_visible_dir / Path('Practice Questions/practice_quiz2_set2_solutions.pdf')
-out=shutil.copyfile(file_new,file_old)
-print(f'{out}\n{file_new}\n---\n')
+file_new = course_dir / Path(
+    "practice_questions/quiz2/practice_quiz2_set2_students.pdf"
+)
+file_old = student_visible_dir / Path("Practice Questions/practice_quiz2_set2.pdf")
+out = shutil.copyfile(file_new, file_old)
+print(f"{out}\n{file_new}\n---\n")
+file_new = course_dir / Path("practice_questions/quiz2/practice_quiz2_set2.pdf")
+file_old = student_visible_dir / Path(
+    "Practice Questions/practice_quiz2_set2_solutions.pdf"
+)
+out = shutil.copyfile(file_new, file_old)
+print(f"{out}\n{file_new}\n---\n")
 #
 # layers
 #
-file_new=course_dir / Path('practice_questions/Review_LayerWorksheet.pdf')
-file_old=student_visible_dir / Path('Practice Questions/Review_LayerWorksheet.pdf')
-out=shutil.copyfile(file_new,file_old)
-print(f'{out}\n{file_new}\n---\n')
-file_new=course_dir / Path('practice_questions/Review_LayerWorksheet_sln.pdf')
-file_old=student_visible_dir / Path('Practice Questions/Review_LayerWorksheet_Solution.pdf')
-out=shutil.copyfile(file_new,file_old)
-print(f'{out}\n{file_new}\n---\n')
+file_new = course_dir / Path("practice_questions/Review_LayerWorksheet.pdf")
+file_old = student_visible_dir / Path("Practice Questions/Review_LayerWorksheet.pdf")
+out = shutil.copyfile(file_new, file_old)
+print(f"{out}\n{file_new}\n---\n")
+file_new = course_dir / Path("practice_questions/Review_LayerWorksheet_sln.pdf")
+file_old = student_visible_dir / Path(
+    "Practice Questions/Review_LayerWorksheet_Solution.pdf"
+)
+out = shutil.copyfile(file_new, file_old)
+print(f"{out}\n{file_new}\n---\n")
 # # # #
 # # # # Day 10
 # # # #
 # # # Day 10 covered part 2 of air temperature/moist atmosphere
-file_old=student_visible_dir / Path('Pre Class Assignments/Day10PreClassAssignment.pdf')
-file_new=course_dir / Path('Classes/Day_10_climate_sensitivity/quiz/Day_10_quiz_2019t1.pdf')
-out=shutil.copyfile(file_new,file_old)
-print(f'{out}\n{file_new}\n---\n')
-file_new=course_dir / Path('Classes/Day_10_climate_sensitivity/quiz/day_10_quiz_2019t1_solutions.pdf')
-file_old=student_visible_dir / Path('Quiz Solutions/Day10QuizSolutions.pdf')
-out=shutil.copyfile(file_new,file_old)
-print(f'{out}\n{file_new}\n---\n')
-file_old=student_visible_dir / Path('Post Class Slides/Day10PostClassSlides.pdf')
-file_new=course_dir / Path('Classes/Day_10_climate_sensitivity/slides/Day10Slides_2019t1_preclass.pdf')
-out=shutil.copyfile(file_new,file_old)
-print(f'{out}\n{file_new}\n---\n')
+file_old = student_visible_dir / Path(
+    "Pre Class Assignments/Day10PreClassAssignment.pdf"
+)
+file_new = course_dir / Path(
+    "Classes/Day_10_climate_sensitivity/quiz/Day_10_quiz_2019t1.pdf"
+)
+out = shutil.copyfile(file_new, file_old)
+print(f"{out}\n{file_new}\n---\n")
+file_new = course_dir / Path(
+    "Classes/Day_10_climate_sensitivity/quiz/day_10_quiz_2019t1_solutions.pdf"
+)
+file_old = student_visible_dir / Path("Quiz Solutions/Day10QuizSolutions.pdf")
+out = shutil.copyfile(file_new, file_old)
+print(f"{out}\n{file_new}\n---\n")
+file_old = student_visible_dir / Path("Post Class Slides/Day10PostClassSlides.pdf")
+file_new = course_dir / Path(
+    "Classes/Day_10_climate_sensitivity/slides/Day10Slides_2019t1_preclass.pdf"
+)
+out = shutil.copyfile(file_new, file_old)
+print(f"{out}\n{file_new}\n---\n")
 # # #
 # # # # Day 11 -- climate sensitivity I
 # # # #
 # # # Day 11 wrapped up air temperature/moist atmosphere; review for midterm 1
-file_old=student_visible_dir / Path('Quiz Solutions/Day11QuizSolutions.pdf')
-file_new=course_dir / Path('Classes/Day_10_climate_sensitivity/quiz/Day11Quiz_2019t1_solutions.pdf')
-out=shutil.copyfile(file_new,file_old)
-print(f'{out}\n{file_new}\n---\n')
-file_old=student_visible_dir / Path('Pre Class Assignments/Day11PreClassAssignment.pdf')
-file_new=course_dir / Path('Classes/Day_10_climate_sensitivity/quiz/day10_posted.pdf')
-out=shutil.copyfile(file_new,file_old)
-print(f'{out}\n{file_new}\n---\n')
-file_old=student_visible_dir / Path('Readings - non-textbook, non-journal article/Day11Reading.pdf')
-file_new=course_dir / Path('Classes/Day_10_climate_sensitivity/Reading/Day10reading_2019t1.pdf')
-out=shutil.copyfile(file_new,file_old)
-print(f'{out}\n{file_new}\n---\n')
-file_old=student_visible_dir / Path('Pre Class Slides/Day11PreClassSlides.pdf')
-file_new=course_dir / Path('Classes/Day_12_feedbacks/Slides/Day11_2019t1_postclass.pdf')
-out=shutil.copyfile(file_new,file_old)
-print(f'{out}\n{file_new}\n---\n')
-file_old=student_visible_dir / Path('Worksheets/Day11Worksheet.pdf')
-file_new=course_dir / Path('Classes/Day_12_feedbacks/Worksheet/Day11-Worksheet-ice-feedback-2019t1.pdf')
-out=shutil.copyfile(file_new,file_old)
-print(f'{out}\n{file_new}\n---\n')
-file_old=student_visible_dir / Path('Worksheets/Day11WorksheetSolutions.pdf')
-file_new=course_dir / Path('Classes/Day_12_feedbacks/Worksheet/day11_2019t1_worksheet_solutions.pdf')
-out=shutil.copyfile(file_new,file_old)
-print(f'{out}\n{file_new}\n---\n')
+file_old = student_visible_dir / Path("Quiz Solutions/Day11QuizSolutions.pdf")
+file_new = course_dir / Path(
+    "Classes/Day_10_climate_sensitivity/quiz/Day11Quiz_2019t1_solutions.pdf"
+)
+out = shutil.copyfile(file_new, file_old)
+print(f"{out}\n{file_new}\n---\n")
+file_old = student_visible_dir / Path(
+    "Pre Class Assignments/Day11PreClassAssignment.pdf"
+)
+file_new = course_dir / Path("Classes/Day_10_climate_sensitivity/quiz/day10_posted.pdf")
+out = shutil.copyfile(file_new, file_old)
+print(f"{out}\n{file_new}\n---\n")
+file_old = student_visible_dir / Path(
+    "Readings - non-textbook, non-journal article/Day11Reading.pdf"
+)
+file_new = course_dir / Path(
+    "Classes/Day_10_climate_sensitivity/Reading/Day10reading_2019t1.pdf"
+)
+out = shutil.copyfile(file_new, file_old)
+print(f"{out}\n{file_new}\n---\n")
+file_old = student_visible_dir / Path("Pre Class Slides/Day11PreClassSlides.pdf")
+file_new = course_dir / Path(
+    "Classes/Day_12_feedbacks/Slides/Day11_2019t1_postclass.pdf"
+)
+out = shutil.copyfile(file_new, file_old)
+print(f"{out}\n{file_new}\n---\n")
+file_old = student_visible_dir / Path("Worksheets/Day11Worksheet.pdf")
+file_new = course_dir / Path(
+    "Classes/Day_12_feedbacks/Worksheet/Day11-Worksheet-ice-feedback-2019t1.pdf"
+)
+out = shutil.copyfile(file_new, file_old)
+print(f"{out}\n{file_new}\n---\n")
+file_old = student_visible_dir / Path("Worksheets/Day11WorksheetSolutions.pdf")
+file_new = course_dir / Path(
+    "Classes/Day_12_feedbacks/Worksheet/day11_2019t1_worksheet_solutions.pdf"
+)
+out = shutil.copyfile(file_new, file_old)
+print(f"{out}\n{file_new}\n---\n")
 # # file_old=student_visible_dir / Path('Post Class Slides/Day11PostClassSlides.pdf')
 # # file_new=course_dir / Path('Classes/Day_11_sytems_review/Day11Slides2018_wT2_postclass.pdf')
 # # out=shutil.copyfile(file_new,file_old)
 # # print(f'{out}\n{file_new}\n---\n')
 # # #
 # Day 12 --- feedback
-file_old=student_visible_dir / Path('Readings - non-textbook, non-journal article/Day12Reading.pdf')
-file_new=course_dir / Path('Classes/Day_12_feedbacks/reading/Day12Reading_2019t1.pdf')
-out=shutil.copyfile(file_new,file_old)
-print(f'{out}\n{file_new}\n---\n')
-file_old=student_visible_dir / Path('Pre Class Slides/Day12PreClassSlides.pdf')
-file_new=course_dir / Path('Classes/Day_12_feedbacks/Slides/Day12_2019t1_postclass.pdf')
-out=shutil.copyfile(file_new,file_old)
-print(f'{out}\n{file_new}\n---\n')
+file_old = student_visible_dir / Path(
+    "Readings - non-textbook, non-journal article/Day12Reading.pdf"
+)
+file_new = course_dir / Path("Classes/Day_12_feedbacks/reading/Day12Reading_2019t1.pdf")
+out = shutil.copyfile(file_new, file_old)
+print(f"{out}\n{file_new}\n---\n")
+file_old = student_visible_dir / Path("Pre Class Slides/Day12PreClassSlides.pdf")
+file_new = course_dir / Path(
+    "Classes/Day_12_feedbacks/Slides/Day12_2019t1_postclass.pdf"
+)
+out = shutil.copyfile(file_new, file_old)
+print(f"{out}\n{file_new}\n---\n")
 # #
 #
 # # Day 13 --- quiz 2
 # #
-file_new=course_dir / Path('Exams/quiz2_2019t1/quiz2_2019t1_answers.pdf')
-file_old=student_visible_dir / Path('Practice Questions/quiz2_answers.pdf')
-out=shutil.copyfile(file_new,file_old)
-print(f'{out}\n{file_new}\n---\n')
+file_new = course_dir / Path("Exams/quiz2_2019t1/quiz2_2019t1_answers.pdf")
+file_old = student_visible_dir / Path("Practice Questions/quiz2_answers.pdf")
+out = shutil.copyfile(file_new, file_old)
+print(f"{out}\n{file_new}\n---\n")
 # # #
 # # # # Day 14 --- Climate Sensitivity
 # # # #
@@ -575,14 +636,20 @@ print(f'{out}\n{file_new}\n---\n')
 # # # # Day 16 --- Paleotemperatures I
 # # # #
 # # #
-file_new=course_dir / Path('Classes/Day_14_Paleotemp_1/Quiz/Day14PreClassAssn_PaleoT1_2019wT1.pdf')
-file_old=student_visible_dir / Path('Pre Class Assignments/Day14PreClassAssignment.pdf')
-out=shutil.copyfile(file_new,file_old)
-print(f'{out}\n{file_new}\n---\n')
-file_new=course_dir / Path('Classes/Day_14_Paleotemp_1/Quiz/Day14PreClassAssn_PaleoT1_2019wT1_sln.pdf')
-file_old=student_visible_dir / Path('Quiz Solutions/Day14QuizSolutions.pdf')
-out=shutil.copyfile(file_new,file_old)
-print(f'{out}\n{file_new}\n---\n')
+file_new = course_dir / Path(
+    "Classes/Day_14_Paleotemp_1/Quiz/Day14PreClassAssn_PaleoT1_2019wT1.pdf"
+)
+file_old = student_visible_dir / Path(
+    "Pre Class Assignments/Day14PreClassAssignment.pdf"
+)
+out = shutil.copyfile(file_new, file_old)
+print(f"{out}\n{file_new}\n---\n")
+file_new = course_dir / Path(
+    "Classes/Day_14_Paleotemp_1/Quiz/Day14PreClassAssn_PaleoT1_2019wT1_sln.pdf"
+)
+file_old = student_visible_dir / Path("Quiz Solutions/Day14QuizSolutions.pdf")
+out = shutil.copyfile(file_new, file_old)
+print(f"{out}\n{file_new}\n---\n")
 # # file_new=course_dir / Path('Classes/Day_14_Paleotemp_1/Worksheet/Day16Worksheet_all_2018wT2.pdf')
 # # file_old=student_visible_dir / Path('Worksheets/Day16Worksheet.pdf')
 # # out=shutil.copyfile(file_new,file_old)
@@ -592,10 +659,12 @@ print(f'{out}\n{file_new}\n---\n')
 # # out=shutil.copyfile(file_new,file_old)
 # # print(f'{out}\n{file_new}\n---\n')
 # # #
-file_new=course_dir / Path('Classes/Day_14_Paleotemp_1/Slides/Day14_EstimatingPaleoTemp1_2019wT1_preclass.pdf')
-file_old=student_visible_dir / Path('Pre Class Slides/Day14PreClassSlides.pdf')
-out=shutil.copyfile(file_new,file_old)
-print(f'{out}\n{file_new}\n---\n')
+file_new = course_dir / Path(
+    "Classes/Day_14_Paleotemp_1/Slides/Day14_EstimatingPaleoTemp1_2019wT1_preclass.pdf"
+)
+file_old = student_visible_dir / Path("Pre Class Slides/Day14PreClassSlides.pdf")
+out = shutil.copyfile(file_new, file_old)
+print(f"{out}\n{file_new}\n---\n")
 # # file_old=student_visible_dir / Path('Post Class Slides/Day16PostClassSlides.pdf')
 # # file_new=course_dir / Path('Classes/Day_14_Paleotemp_1/Slides/Day16_EstimatingPaleoTemp1_2018wT2_postclass.pdf')
 # # out=shutil.copyfile(file_new,file_old)
@@ -629,6 +698,12 @@ print(f'{out}\n{file_new}\n---\n')
 # # file_new=course_dir / Path('Classes/Day_15_Paleotemp_2/Slides/Day17_EstimatingPaleoTemp2_2018wT2_postclass.pdf')
 # # out=shutil.copyfile(file_new,file_old)
 # # print(f'{out}\n{file_new}\n---\n')
+# # Day 17 --- quiz 3
+# #
+file_new = course_dir / Path("Exams/quiz3_2019t1/quiz3_2019t1_answers.pdf")
+file_old = student_visible_dir / Path("Practice Questions/quiz3_answers.pdf")
+out = shutil.copyfile(file_new, file_old)
+print(f"{out}\n{file_new}\n---\n")
 # # #
 # # # #
 # # # # Day 18 --- Milankovitch
@@ -717,7 +792,7 @@ print(f'{out}\n{file_new}\n---\n')
 # # file_new=course_dir / Path('Classes/Day_19_GH_Y/Quiz/Day21PreClassAssn_GH_centtoseas_2018wT2.pdf')
 # # out=shutil.copyfile(file_new,file_old)
 # # print(f'{out}\n{file_new}\n---\n')
-# # file_old=student_visible_dir / Path('Quiz Solutions/Day21QuizSolutions.pdf')
+# # file_old=student_visible_dir / Path('Quiz Solutions/Day21QuizSolutions.pdf`w')
 # # file_new=course_dir / Path('Classes/Day_19_GH_Y/Quiz/Day21PreClassAssn_GH_centtoseas_2018wT2_sln.pdf')
 # # out=shutil.copyfile(file_new,file_old)
 # # print(f'{out}\n{file_new}\n---\n')
@@ -739,7 +814,7 @@ print(f'{out}\n{file_new}\n---\n')
 # # print(f'{out}\n{file_new}\n---\n')
 # # #
 # # # #
-# # # # Day 22 --- Midterm 2
+# # # # Day 22 ---
 # # # #
 # # #
 # # file_old=student_visible_dir / Path('Practice Questions/M2_practiceQs_paleo.pdf')
@@ -773,6 +848,38 @@ print(f'{out}\n{file_new}\n---\n')
 # # print(f'{out}\n{file_new}\n---\n')
 # # #
 # # # #
+# # # # Day 22 --- Climate models
+# # # #
+file_new = course_dir / Path("Classes/Day_23_modeling/reading/dessler_ch8.pdf")
+file_old = student_visible_dir / Path("Pre Class Assignments/dessler_chapter8.pdf")
+out = shutil.copyfile(file_new, file_old)
+print(f"{out}\n{file_new}\n---\n")
+file_new = course_dir / Path("Classes/Day_23_modeling/quiz/day23quiz.pdf")
+file_old = student_visible_dir / Path("Pre Class Assignments/Day22PreClassAssignment.pdf")
+out = shutil.copyfile(file_new, file_old)
+print(f"{out}\n{file_new}\n---\n")
+file_new = course_dir / Path("Classes/Day_23_modeling/quiz/day23quiz_solutions.pdf")
+file_old = student_visible_dir / Path('Quiz Solutions/Day23QuizSolutions.pdf')
+out = shutil.copyfile(file_new, file_old)
+print(f"{out}\n{file_new}\n---\n")
+file_new=course_dir / Path('Classes/Day_23_modeling/slides/Day22_2019t1.pdf')
+file_old=student_visible_dir / Path('Pre Class Slides/Day22PreClassSlides.pdf')
+out=shutil.copyfile(file_new,file_old)
+print(f"{out}\n{file_new}\n---\n")
+file_new=course_dir / Path('Classes/Day_23_modeling/worksheet/kaya_worksheet_students.pdf')
+file_old=student_visible_dir / Path('Worksheets/Day22Worksheet.pdf')
+out=shutil.copyfile(file_new,file_old)
+print(f"{out}\n{file_new}\n---\n")
+#
+#
+## # # Day 23 --- Climate forecasts
+# # # #
+file_new = course_dir / Path("Classes/Day_23_modeling/reading/day22_md.pdf")
+file_old = student_visible_dir / Path('Readings - non-textbook, non-journal article/Day23Reading.pdf')
+out = shutil.copyfile(file_new, file_old)
+print(f"{out}\n{file_new}\n---\n")
+# # #
+# # file_new=course_dir / Path('Classes/Day_25_Future_Decisions/PreClassQuiz/Day24PreClassAssn_FutureDecisions_2018wT2.pdf# # # #
 # # # # Day 24 --- Future Decisions
 # # # #
 # # #
@@ -838,6 +945,3 @@ print(f'{out}\n{file_new}\n---\n')
 # # file_old=student_visible_dir / Path('Practice Questions/final/paleo_questions_sln.pdf')
 # # out=shutil.copyfile(file_new,file_old)
 # # print(f'{out}\n{file_new}\n---\n')
-
-
-

@@ -15,8 +15,14 @@ import shutil
 
 re_imgtag = re.compile(r"(<img ([^>]*?)(?:/>|>(.*?)</img>))")
 re_mdimg = re.compile(r"(!\[([^\]]*)\]\(([^\)]*)\)\{(.+?)\})")
-ore_mdimg = re.compile(r"(!\[([^\]]*)\])(\(.*\))()") #\(([^\)]*)\)\{(.+?)\})")
+re_mdimg = re.compile(r"(!\[([^\]]*)\])(\(.*\))(.*)")  # \(([^\)]*)\)\{(.+?)\})")
 
+
+def get_patterns(findall_out):
+    match, tag, link, opts = findall_out
+    the_link = re.search("\((.*)\)", link)
+    the_link = the_link.group(1)
+    return match, tag, the_link, opts
 
 
 @click.group()
@@ -38,16 +44,12 @@ def find_figs(notebook_file, imgtype):
     fig_count = 1
     for count, the_cell in enumerate(nb_obj["cells"]):
         re_tag = re_dict[imgtype]
-        print(the_cell['source'])
-        print(re_tag.findall(the_cell['source']))
-        for out in re_tag.findall(the_cell["source"]):
-            
-            the_link = re.search(r"""src\s*=\s*["'](\S*?)["']""", opts)
-            src = the_link.group(1)
-            fig_dict[match] = {"src": src}
-            fig_path = src
-            md_img = f"![fig{fig_count}]({fig_path})"
-            fig_dict[match]["mdfig"] = md_img
+        print(the_cell["source"])
+        print(re_tag.findall(the_cell["source"]))
+        for result in re_tag.findall(the_cell["source"]):
+            match, tag, the_link, opts = get_patterns(result)
+            fig_dict[match] = {"src" : the_link}
+            fig_dict[match]['fig_num'] = fig_count
             fig_count += 1
     return fig_dict
 
