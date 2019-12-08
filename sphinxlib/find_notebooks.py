@@ -5,18 +5,44 @@ code to find notebooks
 and try another line
 """
 from pathlib import Path
-from pyutils.table import make_table
-from collections import OrderedDict
-import argparse
-import pdb
-import textwrap
-import importlib_resources as ir
-import context
-import json
 import pprint
 import click
 import shutil
 from jupytext.cli import jupytext
+import datetime
+import os
+import tzlocal
+import stat
+import pytz
+
+def find_modtime(the_file):
+    """
+       remove the .py or .ipynb extenstion from the file name
+       to get the head, and return that name, plus the modification
+       date in UTC.  
+    """
+    the_file = Path(the_file)
+    head = the_file.name
+    #
+    #  see os.stat docs for the format of the stat function.  It returns
+    #  multiple fields (owner, date created, size, etc.) that are indexed by the stat object
+    #
+    the_date = datetime.datetime.fromtimestamp(os.stat(the_file)[stat.ST_MTIME])
+    #
+    # finding the local timezone is suprisingly hard -- need to install a
+    # special module called tzlocal using pip install tzlocal
+    #
+    local_tz = tzlocal.get_localzone()
+    the_date = local_tz.localize(the_date)
+    #
+    # convert every date to UTC
+    #
+    the_date = the_date.astimezone(pytz.utc)
+    #
+    # remove everything but the root filename
+    #
+    head = head.split("/")[-1]
+    return head, the_date
 
 
 def print_files(file_glob):

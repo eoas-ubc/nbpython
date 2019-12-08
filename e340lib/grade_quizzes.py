@@ -58,14 +58,18 @@ def make_dfs(filename):
     the_ids = df_canvas["Student Number"]
 
     print(f"canvas: {the_ids}")
-    df_ind = pd.read_excel(ind_file)
-    df_group = pd.read_excel(group_file)
+    if ind_file.suffix == ".xlsx":
+        df_ind = pd.read_excel(ind_file)
+        df_group = pd.read_excel(group_file)
+    else:
+        df_ind = pd.read_csv(ind_file)
+        df_group=pd.read_csv(group_file)
     group_ids = [
         "STUDENT ID #1",
         "STUDENT ID #2",
         "STUDENT ID #3",
         "STUDENT ID #4",
-        "Total Score",
+        "Percent Score",
     ]
     group_scores = df_group[group_ids].to_numpy()
     nrows, ncols = group_scores.shape
@@ -76,9 +80,9 @@ def make_dfs(filename):
         the_score = group_scores[i, 4]
         row_list = []
         for item in row_ids:
-            the_id = str(item)
+            the_id = str(int(item))
             group_id_list.append(the_id)
-            row_list.append({"id": the_id, "group_score": the_score * 10.0})
+            row_list.append({"id": the_id, "group_score": the_score})
         group_list.append(row_list)
     group_scores = []
     for a_row in group_list:
@@ -86,13 +90,13 @@ def make_dfs(filename):
 
     ind_id_list = []
     ind_list = []
-    ind_scores = df_ind[["STUDENT ID", "Total Score"]].to_numpy()
+    ind_scores = df_ind[["STUDENT ID", "Percent Score"]].to_numpy()
     nrows, ncols = ind_scores.shape
     for i in range(nrows):
-        the_id = str(ind_scores[i, 0])
+        the_id = str(int(ind_scores[i, 0]))
         the_score = ind_scores[i, 1]
         ind_id_list.append(the_id)
-        ind_list.append({"id": the_id, "ind_score": the_score * 10.0})
+        ind_list.append({"id": the_id, "ind_score": the_score})
 
     df_group = pd.DataFrame.from_records(group_scores)
     df_ind = pd.DataFrame.from_records(ind_list)
@@ -126,7 +130,6 @@ def check_ids(df, good_ids):
         if nearest_id != the_id:
             print(f"miss bad id -- {the_id},closest id -- {nearest_id}")
 
-
 @click.command()
 @click.argument("filenames", type=click.File("r"), nargs=1)
 def main(filenames):
@@ -143,7 +146,7 @@ def main(filenames):
         }
     }
 
-    calculate the mid-term grade
+    calculate the quiz grade
 
     Example: python grade_quizzes.py filenames.json
 
@@ -204,9 +207,9 @@ def main(filenames):
     print(df_doit.columns)
     df_doit.rename(
         columns=dict(
-            ind_score="Quiz 3 Indiv.",
-            group_score="Quiz 3 Group",
-            total_score="Quiz 3 Combined",
+            ind_score="Quiz 4 Individual",
+            group_score="Quiz 4 Group",
+            total_score="Quiz 4 Total",
         ),
         inplace=True,
     )

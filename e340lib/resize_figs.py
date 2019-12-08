@@ -60,7 +60,9 @@ def find_figs(notebook_file, imgtype):
 @click.option("--imgtype", type=str, default="img", show_default=True, help="img or md")
 def write_figfile(notebook_file, figlist_file, imgtype):
     """
+    \b
     write a json file with a list of figures and their magnification
+    example:
     """
     notebook_file = Path(notebook_file.name)
     figlist_file = Path(figlist_file.name)

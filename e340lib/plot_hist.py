@@ -55,21 +55,22 @@ def main(grade_dir, filename):
             print(f"{catch.group('quiznum')} -- {catch.group('quiztype')}")
             key = (int(catch.group("quiznum")), catch.group("quiztype").lower())
             col_dict[key] = {"colname": col}
-    for quiznum in [1, 2, 3]:
+    for quiznum in [1, 2, 3, 4]:
         for quiztype in ["individual", "group", "total"]:
             key = (quiznum, quiztype)
             grades = df_grade[col_dict[key]["colname"]].to_numpy()
             grades = clean_grades(grades)
             col_dict[key]["scores"] = grades
 
-    quiz1, quiz2, quiz3 = [], [], []
+    quiz1, quiz2, quiz3, quiz4 = [], [], [], []
     for quiztype in ["individual", "group", "total"]:
         quiz1.append(col_dict[(1, quiztype)]["scores"])
         quiz2.append(col_dict[(2, quiztype)]["scores"])
         quiz3.append(col_dict[(3, quiztype)]["scores"])
+        quiz4.append(col_dict[(4, quiztype)]["scores"])
 
     plt.close("all")
-    fig, axes = plt.subplots(3, 2, figsize=(14, 14), constrained_layout=True)
+    fig, axes = plt.subplots(4, 2, figsize=(14, 16), constrained_layout=True)
 
     ax1 = axes[0, 0]
     ax1, median = calc_grades(ax1, quiz1[2])
@@ -101,7 +102,18 @@ def main(grade_dir, filename):
     posted_title = f"Quiz 3 group grades: median={median:4.2f}"
     ax6.set(title=posted_title, xlabel="group grade", ylabel="count")
 
-    fig.savefig("quiz3_marks.png")
+    ax7 = axes[3, 0]
+    ax7, median = calc_grades(ax7, quiz4[2])
+    posted_title = f"Quiz 4 combined grades: median={median:4.2f}"
+    ax7.set(title=posted_title, xlabel="total grade", ylabel="count")
+
+    ax8 = axes[3, 1]
+    ax8, median = calc_grades(ax8, quiz4[1])
+    posted_title = f"Quiz 4 group grades: median={median:4.2f}"
+    ax8.set(title=posted_title, xlabel="group grade", ylabel="count")
+
+    
+    fig.savefig("all_marks.png")
     plt.show()
 
 

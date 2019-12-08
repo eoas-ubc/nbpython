@@ -15,35 +15,26 @@ import jupytext as jp
 from jupytext.cli import jupytext
 import pandas as pd
 import json
+import click
 
-def make_parser():
-    """
-    set up the command line arguments needed to call the program
-    """
-    linebreaks = argparse.RawTextHelpFormatter
-    parser = argparse.ArgumentParser(
-        formatter_class=linebreaks, description=__doc__.lstrip())
-    parser.add_argument('pynotebook', type=str, help='full path to python notebook with question cells')
-    parser.add_argument('keyout', type=str, help='name of output json file')
-    return parser
 
-def main(args=None):
-    parser = make_parser()
-    args=parser.parse_args(args)
-    pynotebook = Path(args.pynotebook)
-    keyout = Path(args.keyout)
+@click.command()
+@click.argument("pynotebook", type=click.File("r"), nargs=1)
+@click.argument("keyout", type=click.File("w"), nargs=1)
+def main(pynotebook, keyout):
+    keypath = Path(keyout.name)
     nb_obj = jp.readf(pynotebook)
     b_dict = {}
-    if keyout.suffix != '.json':
+    if keypath.suffix != ".json":
         raise ValueError(f"your output file {keyout} needs to end in .json")
     answers = nu.get_qorder(nb_obj)
     for item in answers:
-        if item['qnumA'] in b_dict:
+        if item["qnumA"] in b_dict:
             raise ValueError(f"multiple A qnums for A question {item['qnumA']}")
-        b_dict[item['qnumA']] = item['qnumB']
+        b_dict[item["qnumA"]] = item["qnumB"]
 
-    with open(keyout,'w') as outjson:
-        json.dump(b_dict,outjson,indent=4)
-          
+    json.dump(b_dict, keyout, indent=4)
+
+
 if __name__ == "__main__":
-     main()
+    main()

@@ -14,30 +14,20 @@ import e340lib.noteutils as nu
 import jupytext as jp
 from jupytext.cli import jupytext
 import json
+import click
 
 
-def make_parser():
-    """
-    set up the command line arguments needed to call the program
-    """
-    linebreaks = argparse.RawTextHelpFormatter
-    parser = argparse.ArgumentParser(
-        formatter_class=linebreaks, description=__doc__.lstrip())
-    parser.add_argument('pynotebook', type=str, help='full path to python notebook with answer cells')
-    parser.add_argument('keyout', type=str, help='name of output json file')
-    return parser
-
-def main(args=None):
-    parser = make_parser()
-    args=parser.parse_args(args)
-    pynotebook = Path(args.pynotebook)
-    keyout = Path(args.keyout)
-    if keyout.suffix != '.json':
+@click.command()
+@click.argument("pynotebook", type=click.File("r"), nargs=1)
+@click.argument("keyout", type=click.File("w"), nargs=1)
+def main(pynotebook, keyout):
+    keypath = Path(keyout.name)
+    if keypath.suffix != ".json":
         raise ValueError(f"your output file {keyout} needs to end in .json")
     nb_obj = jp.readf(pynotebook)
     answers = nu.get_key(nb_obj)
-    with open(keyout,'w') as outfile:
-        json.dump(answers,outfile,indent=4)
-          
+    json.dump(answers, keyout, indent=4)
+
+
 if __name__ == "__main__":
-     main()
+    main()
