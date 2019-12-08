@@ -1,8 +1,5 @@
-#!/usr/bin/env python
 """
-code to find notebooks
-
-and try another line
+python $sphinxlib/check_rendered.py notebooks
 """
 from pathlib import Path
 import pprint
@@ -22,7 +19,7 @@ def find_modtime(the_file):
        to get the head, and return that name, plus the modification
        date in UTC.  
     """
-    the_file = str(Path(the_file).resolved())
+    the_file = str(Path(the_file).resolve())
     #
     #  see os.stat docs for the format of the stat function.  It returns
     #  multiple fields (owner, date created, size, etc.) that are indexed by the stat object
@@ -74,8 +71,9 @@ def make_dest(pylist, dest_dir):
         source_ipynb = Path(item.name).with_suffix(".ipynb")
         dest_path = dest_dir / source_ipynb
         outlist.append(dest_path)
-    out_pairs = zip(pylist, outlist)
+    out_pairs = list(zip(pylist, outlist))
     return out_pairs
+
 
 
 @click.command()
@@ -88,9 +86,14 @@ def main(notebook_path):
     py_files = [item for item in py_files if checkpoint_filter(item)]
     dest_dir = root_dir / "rendered"
     file_pairs = make_dest(py_files, dest_dir)
-    print(f"operating on {pp.pformat(py_files)}")
+    need_build = [changed_filter(file1, file2) for file1, file2 in file_pairs]
+    build_list=[]
+    for count,the_pair in enumerate(file_pairs):
+        if need_build[count]:
+            build_list.append(the_pair)
+    print(f"do any files need building {pp.pformat(build_list)}")
     dest_dir.mkdir(parents=True, exist_ok=True)
-    for origin, dest_path in file_pairs:
+    for origin, dest_path in build_list:
         jupytext([str(origin), "--to", "notebook", "--execute"])
         source_path = origin.with_suffix(".ipynb")
         print(f"moving {source_path} to {dest_path}")
