@@ -22,8 +22,7 @@ def find_modtime(the_file):
        to get the head, and return that name, plus the modification
        date in UTC.  
     """
-    the_file = Path(the_file)
-    head = the_file.name
+    the_file = str(Path(the_file).resolved())
     #
     #  see os.stat docs for the format of the stat function.  It returns
     #  multiple fields (owner, date created, size, etc.) that are indexed by the stat object
@@ -42,21 +41,41 @@ def find_modtime(the_file):
     #
     # remove everything but the root filename
     #
-    return head.stem, the_date
+    return the_date
+
 
 def checkpoint_filter(item):
+    """
+    return True if checkpoints is not in name
+    """
     return str(item).find("checkpoints") == -1
 
 
-def print_files(file_glob):
-    good_files = [
-        item
-        for item in file_glob
-        if ((str(item).find("Book") > -1) & (str(item).find("checkpoints") == -1))
-    ]
-    pp = pprint.PrettyPrinter(indent=4)
-    pp.pprint(good_files)
-    return good_files
+def changed_filter(file1, file2):
+    """
+    return True if file1 is newer than file2
+    or if file2 doesn't exist
+    """
+    if not file2.is_file():
+        return True
+    file1 = Path(file1)
+    file2 = Path(file2)
+    file1_date = find_modtime(file1)
+    file2_date = find_modtime(file2)
+    return file1_date > file2_date
+
+
+def make_dest(pylist, dest_dir):
+    """
+    transform a list of py files into a list of ipynb files
+    """
+    outlist = []
+    for item in pylist:
+        source_ipynb = Path(item.name).with_suffix(".ipynb")
+        dest_path = dest_dir / source_ipynb
+        outlist.append(dest_path)
+    out_pairs = zip(pylist, outlist)
+    return out_pairs
 
 
 @click.command()
@@ -65,17 +84,15 @@ def main(notebook_path):
     pp = pprint.PrettyPrinter(indent=4)
     notebook_path = Path(notebook_path).resolve()
     root_dir = Path(notebook_path).parent.resolve()
-    py_files = notebook_path.glob("**/*.py")
+    py_files = list(notebook_path.glob("**/*.py"))
     py_files = [item for item in py_files if checkpoint_filter(item)]
+    dest_dir = root_dir / "rendered"
+    file_pairs = make_dest(py_files, dest_dir)
     print(f"operating on {pp.pformat(py_files)}")
-    ipynb_dir = root_dir / 'rendered'
-    ipynb_dir.mkdir(parents=True, exist_ok = True)
-    for item in py_files:
-        source_ipynb = Path(item.name).with_suffix('.ipynb')
-        source_path = notebook_path / source_ipynb
-        print(f"working on {item}")
-        dest_path = ipynb_dir / source_ipynb
-        jupytext([str(item),'--to','notebook','--execute'])
+    dest_dir.mkdir(parents=True, exist_ok=True)
+    for origin, dest_path in file_pairs:
+        jupytext([str(origin), "--to", "notebook", "--execute"])
+        source_path = origin.with_suffix(".ipynb")
         print(f"moving {source_path} to {dest_path}")
         shutil.move(source_path, dest_path)
 
