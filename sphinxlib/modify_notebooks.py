@@ -44,7 +44,13 @@ def nbinit(notebook_path):
     example:
       python $sphinxlib/modify_notebooks.py nbinit .
     """
-    py_files = Path(notebook_path).glob("*.py")
+    notebook_path = Path(notebook_path)
+    if notebook_path.suffix == ".py":
+        py_files = [notebook_path]
+    elif notebook_path.is_dir():
+        py_files = notebook_path.glob("*.py")
+    else:
+        print(f"can't process {notebook_path}")
     format_string = r'{"jupytext":{"formats":"ipynb,py:percent"}}'
     text_string = (
         r'{"jupytext":{"notebook_metadata_filter": "all,-language_info,-toc,-latex_envs"}}'
