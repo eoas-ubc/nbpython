@@ -55,8 +55,9 @@ def make_dfs(filename):
     ind_file = list(Path().glob(file_dict["files"]["remark_ind"]))[0]
     group_file = list(Path().glob(file_dict["files"]["remark_group"]))[0]
     df_canvas = pd.read_csv(grade_file)
-    the_ids = df_canvas["Student Number"]
-
+    the_ids = string_index(df_canvas["Student Number"].values)
+    df_canvas.loc[:,'Student Number'] = the_ids
+    df_canvas.set_index("Student Number",inplace=True, drop=False)
     print(f"canvas: {the_ids}")
     if ind_file.suffix == ".xlsx":
         df_ind = pd.read_excel(ind_file)
@@ -64,6 +65,7 @@ def make_dfs(filename):
     else:
         df_ind = pd.read_csv(ind_file)
         df_group=pd.read_csv(group_file)
+    
     group_ids = [
         "STUDENT ID #1",
         "STUDENT ID #2",
@@ -80,7 +82,11 @@ def make_dfs(filename):
         the_score = group_scores[i, 4]
         row_list = []
         for item in row_ids:
-            the_id = str(int(item))
+            try:
+                the_id = str(int(item))
+            except:
+                print(f"trouble reading {group_file}")
+                the_id = str(-1)
             group_id_list.append(the_id)
             row_list.append({"id": the_id, "group_score": the_score})
         group_list.append(row_list)
@@ -215,5 +221,5 @@ def main(filenames):
     )
     df_doit.to_csv("testme.csv", index=False)
 
-
-main()
+if __name__ == "__main__":
+    main()

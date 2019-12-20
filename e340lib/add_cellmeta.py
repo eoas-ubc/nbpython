@@ -8,7 +8,6 @@ for every cell
 from pathlib import Path
 import context
 import click
-import sys
 from e340lib import noteutils as nu
 import jupytext as jp
 from jupytext.cli import jupytext

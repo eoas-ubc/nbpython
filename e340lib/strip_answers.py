@@ -27,7 +27,7 @@ def main(old_pynotebook, new_pynotebook):
     nb_obj = jp.readf(old_pynotebook)
     new_nb = nu.strip_answers(nb_obj)
     jp.writef(new_nb, str(new_pynotebook))
-    jupytext(args=[str(new_pynotebook), "--sync"])
+    jupytext(args=[str(new_pynotebook), "--sync", "--execute"])
     Path(new_pynotebook).touch()
 
 

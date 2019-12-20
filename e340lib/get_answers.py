@@ -7,9 +7,6 @@ will generate a new notebook python/assignment3_2019t1_student.py, with paired
 assignment3_2019t1_student.ipynb in the folder above, and run that ipynb file.
 """
 from pathlib import Path
-import context
-import argparse
-import sys
 import e340lib.noteutils as nu
 import jupytext as jp
 from jupytext.cli import jupytext
