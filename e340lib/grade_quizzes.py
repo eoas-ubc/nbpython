@@ -48,24 +48,37 @@ def string_index(float_vec):
     return string_vec
 
 
+def make_canvas_df(filename):
+    df_canvas = pd.read_csv(filename)
+    the_ids = string_index(df_canvas["Student Number"].values)
+    df_canvas.loc[:,'Student Number'] = the_ids
+    df_canvas.set_index("Student Number",inplace=True, drop=True)
+    possible_row = df_canvas.loc[df_canvas["Student"].str.find("Points Possible") > -1]
+    possible_row=df_canvas.loc[possible_row.index[0]]
+    #
+    # drop non-id rows and cast to float
+    #
+    hit = [item[0]=='-' for item in df_canvas.index]
+    df_canvas.drop(df_canvas.index[hit], inplace=True)
+    type_dict={key:np.float for key in  df_canvas.columns.values[7:]}
+    new_canvas_df=df_canvas.astype(dtype=type_dict)
+    new_canvas_df.fillna(0.,inplace=True)
+    return new_canvas_df, possible_row
+
+
 def make_dfs(filename):
     with open(filename, "r") as infile:
         file_dict = json.load(infile)
     grade_file = list(Path().glob(file_dict["files"]["gradebook"]))[0]
+    df_canvas, possible_row = make_canvas_df(grade_file)
     ind_file = list(Path().glob(file_dict["files"]["remark_ind"]))[0]
     group_file = list(Path().glob(file_dict["files"]["remark_group"]))[0]
-    df_canvas = pd.read_csv(grade_file)
-    the_ids = string_index(df_canvas["Student Number"].values)
-    df_canvas.loc[:,'Student Number'] = the_ids
-    df_canvas.set_index("Student Number",inplace=True, drop=False)
-    print(f"canvas: {the_ids}")
     if ind_file.suffix == ".xlsx":
         df_ind = pd.read_excel(ind_file)
         df_group = pd.read_excel(group_file)
     else:
         df_ind = pd.read_csv(ind_file)
         df_group=pd.read_csv(group_file)
-    
     group_ids = [
         "STUDENT ID #1",
         "STUDENT ID #2",
@@ -109,7 +122,7 @@ def make_dfs(filename):
     df_ind = pd.DataFrame.from_records(ind_list)
     df_ind.set_index("id", inplace=True, drop=True)
     df_group.set_index("id", inplace=True, drop=True)
-    return df_group, df_ind, df_canvas
+    return df_group, df_ind, df_canvas, possible_row
 
 
 def merge_two(df_left, df_right):
