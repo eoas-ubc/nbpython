@@ -85,7 +85,8 @@ def make_dfs(filename):
             try:
                 the_id = str(int(item))
             except:
-                print(f"trouble reading {group_file}")
+                print((f"trouble reading {group_file}\n"
+                       f"sudent number {item} set to '-1'"))
                 the_id = str(-1)
             group_id_list.append(the_id)
             row_list.append({"id": the_id, "group_score": the_score})
