@@ -9,15 +9,15 @@ def update_cell_meta(nbobj,key,value):
         the_cell['metadata'].update({key:value})
     return nbobj
 
-def strip_answers(nb_obj):
+def strip_answers(nb_obj,the_string):
     """
-    remove all cells with metadata "answer" from
+    remove all cells with metadata['ctype']==the_string from
     cell list
     """
     new_list = []
     for count,the_cell in enumerate(nb_obj['cells']):
         if 'ctype' in the_cell['metadata']:
-            if the_cell['metadata']['ctype']=="answer":
+            if the_cell['metadata']['ctype']==the_string:
                 continue
         new_list.append(the_cell)
     nb_obj['cells'] = new_list

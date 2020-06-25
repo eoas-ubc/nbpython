@@ -1,8 +1,11 @@
 """
-python $sphinxlib/check_rendered.py notebooks
+take the filelist.json produced by find_notebooks.py
+and render the notebooks
+
+python $sphinxlib/check_rendered.py filelist.json
 """
 from pathlib import Path
-import pprint
+import json
 import click
 import shutil
 from jupytext.cli import jupytext
@@ -11,6 +14,7 @@ import os
 import tzlocal
 import stat
 import pytz
+import prettyprint as pp
 
 
 def find_modtime(the_file):
@@ -75,26 +79,52 @@ def make_dest(pylist, dest_dir):
     return out_pairs
 
 
+@click.group()
+def main():
+    """
+    set of tools transforming jupytext iles
+    """
+    pass
 
-@click.command()
-@click.argument("notebook_path", type=str, nargs=1)
-def main(notebook_path):
-    pp = pprint.PrettyPrinter(indent=4)
-    notebook_path = Path(notebook_path).resolve()
-    root_dir = Path(notebook_path).parent.resolve()
-    py_files = list(notebook_path.glob("**/*.py"))
-    py_files = [item for item in py_files if checkpoint_filter(item)]
-    dest_dir = root_dir / "rendered"
-    file_pairs = make_dest(py_files, dest_dir)
-    need_build = [changed_filter(file1, file2) for file1, file2 in file_pairs]
-    build_list=[]
-    for count,the_pair in enumerate(file_pairs):
+
+@main.command()
+@click.argument("json_filelist", type=click.File("r"), nargs=1)
+def ipynb2py(json_filelist):
+    file_dict = json.load(json_filelist)
+    file_list = file_dict["file_list"]
+    file_list = [(item['py_file'],item['new_file']) for item in file_list]
+    dest_dir = Path(file_dict["rendered_path"])
+    need_build = [changed_filter(file1, file2) for file1, file2 in file_list]
+    build_list = []
+    for count, the_pair in enumerate(file_list):
         if need_build[count]:
             build_list.append(the_pair)
     print(f"do any files need building {pp.pformat(build_list)}")
     dest_dir.mkdir(parents=True, exist_ok=True)
     for origin, dest_path in build_list:
         jupytext([str(origin), "--to", "notebook", "--execute"])
+        source_path = origin.with_suffix(".ipynb")
+        print(f"moving {source_path} to {dest_path}")
+        shutil.move(source_path, dest_path)
+
+
+@main.command()
+@click.argument("json_filelist", type=click.File("r"), nargs=1)
+def py2ipynb(json_filelist):
+
+    file_dict = json.load(json_filelist)
+    file_list = file_dict["file_list"]
+    file_list = [(item['py_file'],item['new_file']) for item in file_list]
+    dest_dir = Path(file_dict["rendered_path"])
+    need_build = [changed_filter(file1, file2) for file1, file2 in file_list]
+    build_list = []
+    for count, the_pair in enumerate(file_list):
+        if need_build[count]:
+            build_list.append(the_pair)
+    print(f"do any files need building {pp.pformat(build_list)}")
+    dest_dir.mkdir(parents=True, exist_ok=True)
+    for origin, dest_path in build_list:
+        jupytext([str(origin), "--to", "py:percent"])
         source_path = origin.with_suffix(".ipynb")
         print(f"moving {source_path} to {dest_path}")
         shutil.move(source_path, dest_path)

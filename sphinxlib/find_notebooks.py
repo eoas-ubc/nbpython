@@ -9,6 +9,61 @@ example:  python $sphinxlib/find_notebooks.py
 from pathlib import Path
 import click
 import json
+from jupytext.cli import jupytext
+import datetime
+import tzlocal
+import os
+import stat
+import pytz
+
+def find_modtime(the_file):
+    """
+       remove the .py or .ipynb extenstion from the file name
+       to get the head, and return that name, plus the modification
+       date in UTC.  
+    """
+    the_file = str(Path(the_file).resolve())
+    #
+    #  see os.stat docs for the format of the stat function.  It returns
+    #  multiple fields (owner, date created, size, etc.) that are indexed by the stat object
+    #
+    the_date = datetime.datetime.fromtimestamp(os.stat(the_file)[stat.ST_MTIME])
+    #
+    # finding the local timezone is suprisingly hard -- need to install a
+    # special module called tzlocal using pip install tzlocal
+    #
+    local_tz = tzlocal.get_localzone()
+    the_date = local_tz.localize(the_date)
+    #
+    # convert every date to UTC
+    #
+    the_date = the_date.astimezone(pytz.utc)
+    #
+    # remove everything but the root filename
+    #
+    return the_date
+
+def checkpoint_filter(item):
+    """
+    return True if checkpoints is not in name
+    """
+    return str(item).find("checkpoints") == -1
+
+
+def changed_filter(file1, file2):
+    """
+    return True if file1 is newer than file2
+    or if file2 doesn't exist
+    """
+    if not file2.is_file():
+        return True
+    file1 = Path(file1)
+    file2 = Path(file2)
+    file1_date = find_modtime(file1)
+    file2_date = find_modtime(file2)
+    return file1_date > file2_date
+
+
 
 
 def print_files(file_glob):
@@ -18,15 +73,23 @@ def print_files(file_glob):
 
 @click.command()
 @click.argument("notebook_path", type=str, nargs=1)
-@click.argument("pyfile_path", type=str, nargs=1)
 @click.argument("json_file", type=click.File("w"), nargs=1)
-def main(notebook_path, pyfile_path, json_file):
+def main(notebook_path, json_file):
     """
     \b
+    descend a folder with ipynb files and create a jupytext py:percent file
+    if one doesn't exist, or if an existing py:percent file is older than
+    the ipynb file.  Write the py:percent file paths to json_file
+    \b
     notebook_path is folder containing notebooks
-    pyfile_path is folder to place pyfile jupytext ipynb
     json_file is the path to a json_file to write info to
     """
+    header_strings = (
+            r'{"jupytext":{"notebook_metadata_filter": "all,-language_info,-toc,-latex_envs"}}',
+            r'{"jupytext":{"formats":"ipynb,py:percent"}}'
+
+        )
+
     notebook_path = Path(notebook_path).resolve()
     print(f"looking for notebooks in {notebook_path}")
     ipynb_files = [
@@ -35,18 +98,20 @@ def main(notebook_path, pyfile_path, json_file):
         if str(item).find("checkpoints") == -1
     ]
     py_files = [item.with_suffix(".py") for item in ipynb_files]
-    relative_files = [item.relative_to(notebook_path) for item in ipynb_files]
-    file_list = []
-    pyfile_path = Path(pyfile_path).resolve()
-    for the_py, the_rel in zip(py_files, relative_files):
-        new_file = str((pyfile_path / the_rel))
-        py_file = str(the_py)
-        dict_item = dict(new_file=new_file, py_file=py_file)
-        file_list.append(dict_item)
+    for py_file, ipynb_file in zip(py_files, ipynb_files):
+        #
+        # generate a py:percent file if it doesn't exist and
+        # make sure it's paired and synced
+        #
+        if not py_file.is_file():
+           jupytext([str(ipynb_file), "--to", "py:percent"])
+           for format_string in header_strings:
+               jupytext([str(py_file), "--update-metadata", format_string])
+           jupytext([str(py_file),"--sync"])
+
     the_dict = dict(
         notebook_path=str(notebook_path),
-        pyfile_path=str(pyfile_path),
-        file_list=file_list,
+        file_list=[str(item) for item in py_files]
     )
     json.dump(the_dict, json_file, indent=4)
 
